@@ -3,8 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef } from "react";
-import OfferCard from "./OfferCard";
-import { HOME_STRIP, OFFER, type OfferTickerBeat, offerAllowedOn, offerIsStatic, offerUsesStrip } from "@/constants/offer";
+import { HOME_STRIP, OFFER, type OfferTickerBeat, offerAllowedOn, offerIsStatic } from "@/constants/offer";
 
 type Props = { active: boolean };
 
@@ -66,62 +65,57 @@ const SiteOffer = ({ active }: Props) => {
   if (!active || !offerAllowedOn(pathname)) return null;
 
   const isHome = pathname === "/";
-
-  if (isHome || offerUsesStrip(pathname)) {
-    const isStatic = !isHome && offerIsStatic(pathname);
-    const source = isHome ? HOME_STRIP : OFFER;
-    const beats = source.ticker.filter((beat) => (isStatic ? !beat.cta : true));
-    const label = `${source.badge}. ${beats.map((beat) => beat.text).join(". ")}`;
-    const ticker = (
-      <>
-        <span className="offer-ticker-badge" aria-hidden="true">
-          <span className="offer-ticker-live" />
-          {source.badge}
-        </span>
-        <span className="offer-ticker-viewport">
-          <span ref={trackRef} className="offer-ticker-track">
-            {[0, 1].map((copy) => (
-              <span key={copy} className="offer-ticker-set" aria-hidden="true">
-                {Array.from({ length: 3 }, () => beats)
-                  .flat()
-                  .map((beat, index) => (
-                    <span key={`${copy}-${index}`} className="offer-ticker-item">
-                      <span className="offer-ticker-sep" />
-                      {beat.cta ? (
-                        <span className="offer-ticker-cta">
-                          {beat.text}
-                          <span className="offer-ticker-arrow" aria-hidden="true">
-                            →
-                          </span>
+  const isStatic = !isHome && offerIsStatic(pathname);
+  const source = isHome ? HOME_STRIP : OFFER;
+  const beats = source.ticker.filter((beat) => (isStatic ? !beat.cta : true));
+  const label = `${source.badge}. ${beats.map((beat) => beat.text).join(". ")}`;
+  const ticker = (
+    <>
+      <span className="offer-ticker-badge" aria-hidden="true">
+        <span className="offer-ticker-live" />
+        {source.badge}
+      </span>
+      <span className="offer-ticker-viewport">
+        <span ref={trackRef} className="offer-ticker-track">
+          {[0, 1].map((copy) => (
+            <span key={copy} className="offer-ticker-set" aria-hidden="true">
+              {Array.from({ length: 3 }, () => beats)
+                .flat()
+                .map((beat, index) => (
+                  <span key={`${copy}-${index}`} className="offer-ticker-item">
+                    <span className="offer-ticker-sep" />
+                    {beat.cta ? (
+                      <span className="offer-ticker-cta">
+                        {beat.text}
+                        <span className="offer-ticker-arrow" aria-hidden="true">
+                          →
                         </span>
-                      ) : (
-                        <TickerText beat={beat} />
-                      )}
-                    </span>
-                  ))}
-              </span>
-            ))}
-          </span>
+                      </span>
+                    ) : (
+                      <TickerText beat={beat} />
+                    )}
+                  </span>
+                ))}
+            </span>
+          ))}
         </span>
-      </>
-    );
+      </span>
+    </>
+  );
 
-    if (isStatic) {
-      return (
-        <section aria-label={label} className="offer-ticker z-30">
-          {ticker}
-        </section>
-      );
-    }
-
+  if (isStatic) {
     return (
-      <Link href={source.ctaHref} aria-label={label} className="offer-ticker z-30">
+      <section aria-label={label} className="offer-ticker z-30">
         {ticker}
-      </Link>
+      </section>
     );
   }
 
-  return <OfferCard />;
+  return (
+    <Link href={source.ctaHref} aria-label={label} className="offer-ticker z-30">
+      {ticker}
+    </Link>
+  );
 };
 
 export default SiteOffer;

@@ -1,13 +1,13 @@
 "use client";
 import React, { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
-import { categories } from "./categories";
-import { isShippedHref } from "@/constants/shipped-routes";
-import { usePrefetchOnIntent } from "@/hooks/usePrefetchOnIntent";
 import Image from "next/image";
-import ResponsiveImage from "@/components/common/ResponsiveImage";
+import { FaArrowRight } from "react-icons/fa6";
+import { categories } from "./categories";
+import { usePrefetchOnIntent } from "@/hooks/usePrefetchOnIntent";
 import { NAV_BANNERS } from "./navAssets";
 import { useIdlePrefetch } from "@/hooks/useIdlePrefetch";
+
 const [
   bannerBgImage,
   bannerBgImage2,
@@ -22,13 +22,18 @@ interface SolutionsNavProps {
 
 const SolutionsNav: React.FC<SolutionsNavProps> = ({ closeNavBottom }) => {
   const prefetchOnIntent = usePrefetchOnIntent();
-  const items = categories.Solutions.filter((item) => isShippedHref(item.url));
+  const items = categories.Solutions;
+  const featured =
+    items.find((item) => item.url === "/solutions/dating-app-development-company") ??
+    items[0];
+  const rest = items.filter((item) => item.url !== featured.url);
+
   const banners = useMemo(
     () => [
       {
         title: "Build Smarter. Launch Faster.",
         description:
-          "Partner with Zyneto to turn your ideas into high-performing digital products, powered by AI, built for scale, and designed to win.",
+          "Partner with Zyneto to turn your ideas into high-performing digital products-powered by AI, built for scale, and designed to win.",
         ctaText: "Launch My Product",
         bg: bannerBgImage,
       },
@@ -49,7 +54,7 @@ const SolutionsNav: React.FC<SolutionsNavProps> = ({ closeNavBottom }) => {
       {
         title: "Results That Actually Matter",
         description:
-          "Faster launches, better performance, and measurable ROI: everything we build is aligned with your business goals.",
+          "Faster launches, better performance, and measurable ROI-everything we build is aligned with your business goals.",
         ctaText: "Boost My Results",
         bg: bannerBgImage4,
       },
@@ -67,75 +72,114 @@ const SolutionsNav: React.FC<SolutionsNavProps> = ({ closeNavBottom }) => {
   const [currentBanner, setCurrentBanner] = useState(banners[0]);
 
   useEffect(() => {
-    const epochMinutes = Math.floor(Date.now() / 60000);
-    const index = epochMinutes % banners.length;
+    const epochSeconds = Math.floor(Date.now() / 1000);
+    const index = epochSeconds % banners.length;
     // Date.now() is impure and cannot run during render; correct the banner post-mount.
     // eslint-disable-next-line react-hooks/set-state-in-effect
     setCurrentBanner(banners[index]);
   }, [banners]);
 
-  // Warm the banner this dropdown will show; the <Image> below is lazy inside a
-  // display:none panel and would not load until it opens.
-  useIdlePrefetch(useMemo(() => [currentBanner.bg], [currentBanner.bg]), {
-    requireFastConnection: true,
-  });
+  useIdlePrefetch(
+    useMemo(
+      () => [currentBanner.bg, featured.backgroundImage],
+      [currentBanner.bg, featured.backgroundImage],
+    ),
+    { requireFastConnection: true },
+  );
 
   return (
-    <div className="grid grid-cols-12 w-full min-h-[360px]">
-      <div className="col-span-9 py-6 px-6 rounded-l-lg">
-        {items && (
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {items.map((item) => (
-              <Link
-                key={item.label}
-                href={item.url}
-                prefetch={false}
-                onMouseEnter={prefetchOnIntent(item.url)}
-                onFocus={prefetchOnIntent(item.url)}
-                onClick={closeNavBottom}
-                className="group relative rounded-xl overflow-hidden h-full min-h-[140px]"
-              >
-                <ResponsiveImage
-                  src={item.backgroundImage}
-                  alt={item.label}
-                  fill
-                  sizes="(max-width: 768px) 100vw, 300px"
-                  className="object-cover w-full h-full"
-                  draggable={false}
-                />
-                <div className="absolute inset-0 bg-black/60 group-hover:bg-linear-to-r from-[#ff732d]/40 via-[#ff0044]/40 to-[#9900ff]/40 z-10"></div>
-                <div className="absolute bottom-0 left-0 right-0 p-4 z-20">
-                  <span className="block text-[16px] text-center text-white transition-colors duration-300">
-                    {item.label}
-                  </span>
+    <div className="grid w-full grid-cols-12 min-h-[360px]">
+      <div className="col-span-9 flex flex-col px-6 py-5">
+        <div className="mb-4 flex items-center justify-between gap-4">
+          <p className="text-[17px] font-semibold text-[#161616]">
+            App development solutions
+          </p>
+          <Link
+            href="/solutions"
+            prefetch={false}
+            onMouseEnter={prefetchOnIntent("/solutions")}
+            onFocus={prefetchOnIntent("/solutions")}
+            onClick={closeNavBottom}
+            className="gradient-bg-btn shrink-0 rounded-full!"
+            style={{ fontSize: 15, lineHeight: "20px", padding: "8px 18px" }}
+          >
+            View all solutions
+          </Link>
+        </div>
+
+        <div className="grid flex-1 grid-cols-12 items-stretch gap-4">
+          <Link
+            href={featured.url}
+            prefetch={false}
+            onMouseEnter={prefetchOnIntent(featured.url)}
+            onFocus={prefetchOnIntent(featured.url)}
+            onClick={closeNavBottom}
+            className="group relative col-span-6 block min-h-[240px] overflow-hidden rounded-xl"
+          >
+            <Image
+              src={featured.backgroundImage}
+              alt=""
+              fill
+              sizes="420px"
+              className="object-cover transition duration-500 group-hover:scale-[1.03]"
+              draggable={false}
+            />
+            <div className="pointer-events-none absolute inset-0 bg-linear-to-t from-black/80 via-black/35 to-black/20" />
+            <div className="absolute inset-x-0 bottom-0 z-10 flex items-center justify-between gap-3 px-4 py-3">
+              <p className="text-[15px] font-semibold leading-snug text-white">
+                {featured.label}
+              </p>
+              <span className="inline-flex shrink-0 items-center gap-1.5 text-[13px] font-medium text-white">
+                See the build
+                <FaArrowRight className="text-[11px] transition-transform duration-200 group-hover:translate-x-0.5" />
+              </span>
+            </div>
+          </Link>
+
+          <ul className="col-span-6 flex flex-col justify-center">
+            {rest.map((item) => (
+              <li key={item.url} className="flex items-center gap-3 py-2">
+                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-white shadow-lg">
+                  <Image
+                    src={item.icon}
+                    alt=""
+                    width={28}
+                    height={28}
+                    className="object-contain"
+                    draggable={false}
+                  />
                 </div>
-              </Link>
+                <p className="text-[15px] font-medium leading-snug text-[#161616]">
+                  {item.label}
+                </p>
+              </li>
             ))}
-          </div>
-        )}
+          </ul>
+        </div>
       </div>
-      <div
-        className="col-span-3 rounded-r-lg! p-6 relative overflow-hidden"
-      >
+
+      <div className="relative col-span-3 overflow-hidden rounded-r-lg! p-6">
         <Image
           src={currentBanner.bg}
           alt={currentBanner.title}
           fill
           sizes="(max-width: 768px) 100vw, 320px"
-          className="object-cover w-full h-full absolute inset-0"
+          className="absolute inset-0 h-full w-full object-cover"
           draggable={false}
         />
-        <div className="w-full relative mb-4 h-full flex flex-col justify-between">
-          <div className="flex flex-col items-start justify-end space-y-4 z-10 relative mt-auto">
-            <p className="text-[20px] font-semibold text-white mb-2">
+        <div className="relative mb-4 flex h-full w-full flex-col justify-between">
+          <div className="relative z-10 mt-auto flex flex-col items-start justify-end space-y-4">
+            <p className="mb-2 text-[20px] font-semibold text-white">
               {currentBanner.title}
             </p>
-            <p className="text-[14px] text-white mb-4">
+            <p className="mb-4 text-[14px] text-white">
               {currentBanner.description}
             </p>
           </div>
           <div>
-            <Link href="/contact-us" onClick={closeNavBottom}
+            <Link
+              href="/contact-us"
+              onClick={closeNavBottom}
               className="gradient-bg-btn rounded-full!"
             >
               {currentBanner.ctaText}
