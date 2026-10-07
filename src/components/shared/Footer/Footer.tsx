@@ -23,138 +23,57 @@ const techbehemothCertificate = "/static/assets/footer/tech-behemoths.svg";
 type LinkItem = { label: string; url: string };
 type SocialLink = { icon: React.ReactNode; url: string; label: string };
 
-const companyLinks: LinkItem[] = [
-  { label: "Home", url: "/" },
-  { label: "Services", url: "/services" },
-  { label: "Solutions", url: "/solutions" },
-  { label: "About Us", url: "/about-us" },
-  { label: "Case Studies", url: "/case-studies" },
-  { label: "Contact Us", url: "/contact-us" },
-];
-
-const mobileLinks: LinkItem[] = [
-  { label: "Mobile App Development", url: "/services/mobile-app-development" },
+const footerColumns: { title: string; links: LinkItem[] }[] = [
   {
-    label: "Android App Development",
-    url: "/services/android-app-development",
-  },
-  { label: "iOS App Development", url: "/services/ios-app-development" },
-  {
-    label: "Flutter App Development",
-    url: "/services/flutter-app-development",
+    title: "Company",
+    links: [
+      { label: "Home", url: "/" },
+      { label: "Services", url: "/services" },
+      { label: "Solutions", url: "/solutions" },
+      { label: "About Us", url: "/about-us" },
+      { label: "Case Studies", url: "/case-studies" },
+      { label: "Contact Us", url: "/contact-us" },
+    ],
   },
   {
-    label: "React Native App Development",
-    url: "/services/react-native-app-development",
-  },
-];
-
-const webServicesLinks: LinkItem[] = [
-  { label: "Web Development", url: "/services/web-development" },
-  { label: "React.js Development", url: "/services/reactjs-development" },
-  { label: "Next.js Development", url: "/services/nextjs-development" },
-  { label: "Angular Development", url: "/services/angular-development" },
-  { label: "Node.js Development", url: "/services/nodejs-development" },
-  {
-    label: "POS Software Development",
-    url: "/services/pos-software-development",
-  },
-];
-
-const backendDataLinks: LinkItem[] = [
-  { label: "Python Development", url: "/services/python-development" },
-  { label: "Django Development", url: "/services/django-development" },
-  { label: "Flask Development", url: "/services/flask-development" },
-  {
-    label: "FastAPI Development",
-    url: "/services/fastapi-development-company",
-  },
-  { label: "Database Development", url: "/services/database-development" },
-  {
-    label: "Web Scraping & Data Extraction Services",
-    url: "/services/web-scraping-data-extraction-services",
-  },
-];
-
-const aiDevelopmentLinks: LinkItem[] = [
-  {
-    label: "Artificial Intelligence Development",
-    url: "/services/artificial-intelligence",
+    title: "AI Development",
+    links: [
+      {
+        label: "Artificial Intelligence Development",
+        url: "/services/artificial-intelligence",
+      },
+      {
+        label: "Generative AI Development",
+        url: "/services/generative-ai-development",
+      },
+      { label: "AI Agent Development", url: "/services/ai-agent-development" },
+      {
+        label: "AI Chatbot Development",
+        url: "/services/ai-chatbot-development-company",
+      },
+      {
+        label: "AI Workflow Automation",
+        url: "/services/ai-workflow-automation-services",
+      },
+    ],
   },
   {
-    label: "Generative AI Development",
-    url: "/services/generative-ai-development",
-  },
-  { label: "AI Agent Development", url: "/services/ai-agent-development" },
-  {
-    label: "AI Chatbot Development",
-    url: "/services/ai-chatbot-development-company",
-  },
-  {
-    label: "AI Copilot Development",
-    url: "/services/ai-copilot-development-company",
-  },
-];
-
-const aiSolutionsLinks: LinkItem[] = [
-  {
-    label: "AI Workflow Automation",
-    url: "/services/ai-workflow-automation-services",
+    title: "App Development",
+    links: [
+      { label: "Mobile App Development", url: "/services/mobile-app-development" },
+      { label: "Web Development", url: "/services/web-development" },
+      {
+        label: "Dating App Development",
+        url: "/solutions/dating-app-development-company",
+      },
+    ],
   },
   {
-    label: "Multimodal AI Development",
-    url: "/services/multimodal-ai-development-company",
-  },
-  {
-    label: "AI-powered Document Management",
-    url: "/services/ai-document-management-system",
-  },
-  {
-    label: "Predictive Analytics Development",
-    url: "/services/predictive-analytics-development",
-  },
-  {
-    label: "Chat With Documents Solution",
-    url: "/services/chat-with-documents-solution",
-  },
-];
-
-const otherServicesLinks: LinkItem[] = [
-  { label: "Blockchain Development", url: "/services/blockchain-development" },
-  {
-    label: "Smart Contract Development",
-    url: "/services/smart-contract-development-services",
-  },
-  { label: "IoT App Development", url: "/services/iot-app-development" },
-  { label: "CI/CD Consulting", url: "/services/ci-cd-consulting" },
-  { label: "UI/UX Design", url: "/services/ui-ux-design" },
-  { label: "NLP Development", url: "/services/nlp-development" },
-];
-
-const industrySolutionsLinks: LinkItem[] = [
-  {
-    label: "Ecommerce App Development",
-    url: "/solutions/ecommerce-app-development",
-  },
-  {
-    label: "Restaurant App Development",
-    url: "/solutions/restaurant-app-development-company",
-  },
-  {
-    label: "Dating App Development",
-    url: "/solutions/dating-app-development-company",
-  },
-  {
-    label: "Fantasy Sports App Development",
-    url: "/solutions/fantasy-sports-app-development-company",
-  },
-  {
-    label: "Classified App Development",
-    url: "/solutions/classified-app-development",
-  },
-  {
-    label: "Music Streaming App Development",
-    url: "/solutions/music-streaming-app-development-company",
+    title: "Emerging Tech",
+    links: [
+      { label: "Blockchain Development", url: "/services/blockchain-development" },
+      { label: "IoT App Development", url: "/services/iot-app-development" },
+    ],
   },
 ];
 
@@ -181,21 +100,14 @@ const socialLinks: SocialLink[] = [
   },
 ];
 
-const shippedLinks = (links: LinkItem[]) =>
-  links.filter((link) => isShippedHref(link.url));
-
 const Footer: React.FC = () => {
   const email = COMPANY_CONTACT.email;
-  const footerColumns = [
-    { title: "Company", links: companyLinks },
-    { title: "AI Development", links: shippedLinks(aiDevelopmentLinks) },
-    { title: "AI Solutions", links: shippedLinks(aiSolutionsLinks) },
-    { title: "Mobile Development", links: shippedLinks(mobileLinks) },
-    { title: "Web Development", links: shippedLinks(webServicesLinks) },
-    { title: "Backend & Data", links: shippedLinks(backendDataLinks) },
-    { title: "Industry Solutions", links: shippedLinks(industrySolutionsLinks) },
-    { title: "Emerging Tech", links: shippedLinks(otherServicesLinks) },
-  ].filter((column) => column.links.length > 0);
+  const columns = footerColumns
+    .map((column) => ({
+      ...column,
+      links: column.links.filter((link) => isShippedHref(link.url)),
+    }))
+    .filter((column) => column.links.length > 0);
 
   return (
     <footer className="relative border-t border-black/10 bg-white text-[#161616] overflow-hidden">
@@ -333,8 +245,8 @@ const Footer: React.FC = () => {
             </div>
           </div>
         </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
-          {footerColumns.map((column) => (
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-x-8 gap-y-10 mb-8">
+          {columns.map((column) => (
             <FooterColumn
               key={column.title}
               title={column.title}
