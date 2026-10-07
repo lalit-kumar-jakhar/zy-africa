@@ -20,7 +20,7 @@ const SolutionsNavMobile: React.FC<Props> = ({ closeMobileMenu }) => {
           key={item.label}
           href={item.url}
           onClick={closeMobileMenu}
-          className="group flex items-center justify-between gap-3 px-3 py-2 text-[14px] rounded-lg border border-white/20 text-white hover:bg-orange-400/20 transition"
+          className="group flex items-center justify-between gap-3 px-3 py-2 text-[14px] rounded-lg border border-black/10 text-[#161616] hover:bg-[#9900FF]/10 transition"
         >
           <div className="flex items-center gap-3">
             <Image
@@ -31,11 +31,11 @@ const SolutionsNavMobile: React.FC<Props> = ({ closeMobileMenu }) => {
               className="object-contain"
               draggable={false}
             />
-            <span className="group-hover:text-purple-300 transition">
+            <span className="group-hover:text-[#9900FF] transition">
               {item.label}
             </span>
           </div>
-          <FaArrowRight className="text-purple-300 text-[12px]" />
+          <FaArrowRight className="text-[#9900FF] text-[12px]" />
         </Link>
       ))}
     </div>

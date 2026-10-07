@@ -4,7 +4,6 @@ import Link from "next/link";
 import ServicesNavMobile from "./ServicesNavMobile";
 import SolutionsNavMobile from "./SolutionsNavMobile";
 import IndustriesNavMobile from "./IndustriesNavMobile";
-import CompanyNavMobile from "./CompanyNavMobile";
 import { BiMinus, BiPlus } from "react-icons/bi";
 import { motion, AnimatePresence } from "framer-motion";
 import { useModal } from "@/context/ModalContext";
@@ -14,13 +13,12 @@ interface MobileNavProps {
   closeMobileMenu: () => void;
 }
 
-const dropdownItems = ["Services", "Solutions", "Industries", "Company"];
+const dropdownItems = ["Services", "Solutions", "Industries"];
 
 const dropdownIndexPaths: Record<string, string> = {
   Services: "/services",
   Solutions: "/solutions",
   Industries: "/industries",
-  Company: "/about-us",
 };
 
 const MobileNav: React.FC<MobileNavProps> = ({ closeMobileMenu }) => {
@@ -40,8 +38,6 @@ const MobileNav: React.FC<MobileNavProps> = ({ closeMobileMenu }) => {
         return <SolutionsNavMobile closeMobileMenu={closeMobileMenu} />;
       case "Industries":
         return <IndustriesNavMobile closeMobileMenu={closeMobileMenu} />;
-      case "Company":
-        return <CompanyNavMobile closeMobileMenu={closeMobileMenu} />;
       default:
         return null;
     }
@@ -110,12 +106,12 @@ const MobileNav: React.FC<MobileNavProps> = ({ closeMobileMenu }) => {
   return (
     <div className="sticky inset-0 z-999 xl:hidden" id="mobile-navigation">
       <div
-        className="absolute inset-0 bg-black/60 backdrop-blur-md rounded-b-xl"
+        className="absolute inset-0 bg-white border-t border-black/10"
         onClick={closeMobileMenu}
       ></div>
       <div
         ref={mobileNavRef}
-        className="relative z-10 overflow-y-auto h-full text-white pb-6 px-2 rounded-b-xl"
+        className="relative z-10 overflow-y-auto h-full text-[#161616] pb-6 px-2"
         style={{ WebkitOverflowScrolling: "touch" }}
       >
         <div className="container mx-auto px-4 pt-4">
@@ -124,14 +120,16 @@ const MobileNav: React.FC<MobileNavProps> = ({ closeMobileMenu }) => {
             { title: "Services" },
             { title: "Solutions" },
             ...(liveIndustries().length > 0 ? [{ title: "Industries" }] : []),
-            { title: "Company" },
+            { title: "About Us", path: "/about-us" },
+            { title: "Case Studies", path: "/case-studies" },
+            { title: "Contact Us", path: "/contact-us" },
           ].map((item) => (
             <div key={item.title}>
               {dropdownItems.includes(item.title) ? (
                 <>
                   <button
                     onClick={() => handleToggleDropdown(item.title)}
-                    className="w-full text-left py-2 text-white hover:text-purple-300 transition text-[16px]"
+                    className="w-full text-left py-2 text-[#161616] hover:text-[#9900FF] transition text-[16px]"
                   >
                     {item.title}{" "}
                     <span className="float-right">
@@ -161,7 +159,7 @@ const MobileNav: React.FC<MobileNavProps> = ({ closeMobileMenu }) => {
                           <Link
                             href={dropdownIndexPaths[item.title]}
                             onClick={closeMobileMenu}
-                            className="mb-2 block rounded-xl border border-white/20 px-3 py-2.5 text-[14px] font-medium text-white transition hover:bg-orange-400/20"
+                            className="mb-2 block rounded-xl border border-black/10 px-3 py-2.5 text-[14px] font-medium text-[#161616] transition hover:bg-black/5"
                           >
                             All {item.title.toLowerCase()}
                           </Link>
@@ -175,7 +173,7 @@ const MobileNav: React.FC<MobileNavProps> = ({ closeMobileMenu }) => {
                 <Link
                   href={item.path!}
                   onClick={closeMobileMenu}
-                  className="block py-2 text-white hover:text-purple-300 transition"
+                  className="block py-2 text-[#161616] hover:text-[#9900FF] transition"
                 >
                   {item.title}
                 </Link>

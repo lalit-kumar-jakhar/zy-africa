@@ -96,25 +96,25 @@ const CompanyNavMobile: React.FC<CompanyNavMobileProps> = ({
             key={card.key}
             href={card.url}
             onClick={closeMobileMenu}
-            className="group flex items-center justify-between gap-3 rounded-xl border border-white/20 px-3 py-3 text-[14px] text-white transition hover:bg-orange-400/15"
+            className="group flex items-center justify-between gap-3 rounded-xl border border-black/10 px-3 py-3 text-[14px] text-[#161616] transition hover:bg-black/5"
           >
             <div className="flex min-w-0 items-center gap-3">
-              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg border border-white/15 bg-white/10">
-                <card.Icon className="text-[14px] text-white/90" aria-hidden />
+              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg border border-black/10 bg-black/5">
+                <card.Icon className="text-[14px] text-[#161616]" aria-hidden />
               </div>
               <div className="min-w-0">
-                <span className="block text-[10px] font-semibold uppercase tracking-widest text-white/50">
+                <span className="block text-[10px] font-semibold uppercase tracking-widest text-[#616161]">
                   {card.eyebrow}
                 </span>
                 <span className="block truncate text-[15px] font-medium">
                   {card.title}
                 </span>
-                <span className="mt-0.5 block text-[12px] text-white/60 line-clamp-1">
+                <span className="mt-0.5 block text-[12px] text-[#616161] line-clamp-1">
                   {card.description}
                 </span>
               </div>
             </div>
-            <FaArrowRight className="shrink-0 text-[12px] text-purple-300 transition-transform duration-300 group-hover:translate-x-0.5" />
+            <FaArrowRight className="shrink-0 text-[12px] text-[#9900FF] transition-transform duration-300 group-hover:translate-x-0.5" />
           </Link>
         ),
       )}

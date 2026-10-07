@@ -12,7 +12,8 @@ import { FaChevronDown, FaChevronUp } from "react-icons/fa";
 import { liveIndustries } from "@/constants/feature-flags";
 import { useIdlePrefetch } from "@/hooks/useIdlePrefetch";
 import { firstTabIcons } from "./Dropdowns/navAssets";
-const zynetoLogo = "/static/assets/zynetoLogo.svg";
+import CustomAIButton from "@/components/common/CustomAIButton";
+const zynetoLogo = "/static/assets/zynetoLogoDark.svg";
 
 type NavItem =
   | { title: string; path: string; hasDropdown?: never; indexPath?: never }
@@ -31,11 +32,9 @@ const navItems: NavItem[] = [
         } as NavItem,
       ]
     : []),
-  {
-    title: "Company",
-    hasDropdown: true,
-    indexPath: "/about-us",
-  } as NavItem,
+  { title: "About Us", path: "/about-us" },
+  { title: "Case Studies", path: "/case-studies" },
+  { title: "Contact Us", path: "/contact-us" },
 ];
 
 const Navbar: React.FC = () => {
@@ -90,11 +89,9 @@ const Navbar: React.FC = () => {
   }, []);
 
   return (
-    <nav className="fixed top-0 left-0 w-full z-50 text-white h-auto lg:h-(--nav-height) backdrop-blur-xl">
-      <div className="min-[1280px]:container xl:mx-auto xl:px-4 my-0 xl:my-1 w-full">
-        {" "}
-        <div className="relative w-full flex items-center justify-between bg-[#000000]/50 xl:rounded-lg px-4 py-3 lg:px-0 lg:py-0">
-          <div className="px-0 lg:px-4 py-0 lg:py-2">
+    <nav className="fixed top-0 left-0 w-full z-50 bg-white text-[#161616] h-auto lg:h-(--nav-height) border-b border-black/10">
+      <div className="container relative mx-auto flex w-full items-center justify-between px-4 py-3 lg:py-0">
+          <div className="py-0 lg:py-2">
             <Link href="/" className="w-[120px] md:w-[160px] block">
               <Image
                 src={zynetoLogo}
@@ -108,9 +105,10 @@ const Navbar: React.FC = () => {
             </Link>
           </div>
           <div
-            className="hidden xl:flex items-center space-x-6"
+            className="hidden xl:flex items-center gap-5"
             ref={dropdownRef}
           >
+            <CustomAIButton />
             {navItems.map((item) => (
               <div key={item.title}>
                 {item.hasDropdown ? (
@@ -128,7 +126,7 @@ const Navbar: React.FC = () => {
                     <Link
                       href={item.indexPath}
                       onClick={() => setActiveDropdown(null)}
-                      className="flex items-center gap-1 text-[16px] font-medium hover:text-purple-300 transition duration-150 cursor-pointer py-5"
+                      className="flex items-center gap-1 text-[16px] font-medium hover:text-[#9900FF] transition duration-150 cursor-pointer py-5"
                       aria-haspopup="menu"
                       aria-expanded={activeDropdown === item.title}
                     >
@@ -152,7 +150,7 @@ const Navbar: React.FC = () => {
                     onClick={() => setActiveDropdown(null)}
                     // inline-block + py-1 lifts the tap target from 18px to 26px,
                     // clearing the 24px WCAG 2.2 AA minimum.
-                    className={`inline-block py-1 hover:text-purple-300 transition duration-150`}
+                    className={`inline-block py-1 hover:text-[#9900FF] transition duration-150`}
                   >
                     {item.title}
                   </Link>
@@ -160,7 +158,7 @@ const Navbar: React.FC = () => {
               </div>
             ))}
           </div>
-          <div className="hidden xl:block lg:px-4 lg:py-2">
+          <div className="hidden xl:flex items-center gap-3 lg:py-2">
             <button
               onClick={openModal}
               className="gradient-bg-btn rounded-full!"
@@ -168,10 +166,11 @@ const Navbar: React.FC = () => {
               Get Quote
             </button>
           </div>
-          <div className="xl:hidden flex items-center gap-2 lg:px-4 lg:py-2">
+          <div className="xl:hidden flex items-center gap-2 lg:py-2">
+            <CustomAIButton />
             <button
               onClick={() => setMobileNavOpen(!mobileNavOpen)}
-              className="sm:p-2 focus:outline-none focus:ring-2 focus:ring-orange-400 focus:ring-offset-2 focus:ring-offset-black rounded-md"
+              className="sm:p-2 focus:outline-none focus:ring-2 focus:ring-orange-400 focus:ring-offset-2 focus:ring-offset-white rounded-md"
               aria-label="Toggle mobile navigation menu"
               aria-expanded={mobileNavOpen}
               aria-controls="mobile-navigation"
@@ -184,12 +183,11 @@ const Navbar: React.FC = () => {
                   size={16}
                   rounded
                   direction="right"
-                  color="#ffffff"
+                  color="#161616"
                 />
               </NoSSR>
             </button>
           </div>
-        </div>
       </div>
       <NoSSR>
         {mobileNavOpen && <MobileNav closeMobileMenu={handleMobileLinkClick} />}

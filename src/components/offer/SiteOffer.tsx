@@ -4,7 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef } from "react";
 import OfferCard from "./OfferCard";
-import { OFFER, type OfferTickerBeat, offerAllowedOn, offerIsStatic, offerUsesStrip } from "@/constants/offer";
+import { HOME_STRIP, OFFER, type OfferTickerBeat, offerAllowedOn, offerIsStatic, offerUsesStrip } from "@/constants/offer";
 
 type Props = { active: boolean };
 
@@ -65,15 +65,18 @@ const SiteOffer = ({ active }: Props) => {
 
   if (!active || !offerAllowedOn(pathname)) return null;
 
-  if (offerUsesStrip(pathname)) {
-    const isStatic = offerIsStatic(pathname);
-    const beats = OFFER.ticker.filter((beat) => (isStatic ? !beat.cta : true));
-    const label = `${OFFER.badge}. ${beats.map((beat) => beat.text).join(". ")}`;
+  const isHome = pathname === "/";
+
+  if (isHome || offerUsesStrip(pathname)) {
+    const isStatic = !isHome && offerIsStatic(pathname);
+    const source = isHome ? HOME_STRIP : OFFER;
+    const beats = source.ticker.filter((beat) => (isStatic ? !beat.cta : true));
+    const label = `${source.badge}. ${beats.map((beat) => beat.text).join(". ")}`;
     const ticker = (
       <>
         <span className="offer-ticker-badge" aria-hidden="true">
           <span className="offer-ticker-live" />
-          {OFFER.badge}
+          {source.badge}
         </span>
         <span className="offer-ticker-viewport">
           <span ref={trackRef} className="offer-ticker-track">
@@ -112,7 +115,7 @@ const SiteOffer = ({ active }: Props) => {
     }
 
     return (
-      <Link href={OFFER.ctaHref} aria-label={label} className="offer-ticker z-30">
+      <Link href={source.ctaHref} aria-label={label} className="offer-ticker z-30">
         {ticker}
       </Link>
     );

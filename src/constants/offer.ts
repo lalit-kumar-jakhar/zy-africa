@@ -24,6 +24,17 @@ export const OFFER = {
 
 export type OfferTickerBeat = (typeof OFFER.ticker)[number];
 
+export const HOME_STRIP = {
+  badge: "STUDIO",
+  ctaHref: "/contact-us",
+  ticker: [
+    { text: "Senior engineers on every engagement", emphasis: "Senior" },
+    { text: "Production systems, handed over in full" },
+    { text: "You keep the code, the models, and the data" },
+    { text: "Request a conversation", cta: true },
+  ] as OfferTickerBeat[],
+};
+
 export const OFFER_HIDDEN_PREFIXES = ["/thank-you", "/privacy", "/terms"];
 
 export const OFFER_STATIC_PREFIXES = ["/contact-us"];

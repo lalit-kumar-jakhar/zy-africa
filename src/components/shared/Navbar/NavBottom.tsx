@@ -31,10 +31,8 @@ const NavBottom: React.FC<NavBottomProps> = ({ type, closeNavBottom }) => {
 
   return (
     <div className="absolute left-0 top-[calc(var(--nav-height)-8px)] w-full z-50">
-      <div className="min-[1280px]:container xl:mx-auto">
-        <div className="bg-[#FFFFFF] shadow-xl rounded-lg! overflow-hidden">
-          {ComponentToRender}
-        </div>
+      <div className="bg-[#FFFFFF] shadow-xl rounded-lg! overflow-hidden">
+        {ComponentToRender}
       </div>
     </div>
   );

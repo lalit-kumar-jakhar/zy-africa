@@ -30,7 +30,7 @@ const ServicesNavMobile: React.FC<Props> = ({ closeMobileMenu }) => {
         return (
           <div
             key={item.label}
-            className="rounded-xl bg-black/10 border border-white/10 pl-2 pr-1 py-2"
+            className="rounded-xl bg-black/5 border border-black/10 pl-2 pr-1 py-2"
           >
             <div className="flex justify-between items-center w-full">
               <button
@@ -40,17 +40,17 @@ const ServicesNavMobile: React.FC<Props> = ({ closeMobileMenu }) => {
                 <span
                   className={`truncate transition ${
                     openCategory === item.label
-                      ? "text-gray-400"
-                      : "text-white hover:text-purple-300"
+                      ? "text-[#9900FF]"
+                      : "text-[#161616] hover:text-[#9900FF]"
                   }`}
                 >
                   {item.label}
                 </span>
                 {hasChildren &&
                   (openCategory === item.label ? (
-                    <IoChevronUp className="text-purple-300 text-lg" />
+                    <IoChevronUp className="text-[#9900FF] text-lg" />
                   ) : (
-                    <IoChevronDown className="text-gray-400 text-lg" />
+                    <IoChevronDown className="text-[#616161] text-lg" />
                   ))}
               </button>
             </div>
@@ -69,7 +69,7 @@ const ServicesNavMobile: React.FC<Props> = ({ closeMobileMenu }) => {
                         <Link
                           href={child.url}
                           onClick={closeMobileMenu}
-                          className="group flex items-center gap-3 px-3 py-2 text-[14px] rounded-lg border border-white/20 text-white hover:bg-purple-300/20 transition"
+                          className="group flex items-center gap-3 px-3 py-2 text-[14px] rounded-lg border border-black/10 text-[#161616] hover:bg-[#9900FF]/10 transition"
                         >
                           <div className="flex items-center justify-center">
                             <Image
@@ -81,7 +81,7 @@ const ServicesNavMobile: React.FC<Props> = ({ closeMobileMenu }) => {
                               draggable={false}
                             />
                           </div>
-                          <span className="group-hover:text-purple-300 transition">
+                          <span className="group-hover:text-[#9900FF] transition">
                             {child.label}
                           </span>
                         </Link>

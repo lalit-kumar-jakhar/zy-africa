@@ -14,8 +14,7 @@ import Script from "next/script";
 import DMCABadge from "@/components/common/DMCABadge";
 import { COMPANY_CONTACT } from "@/data/companyDetails";
 import { isShippedHref } from "@/constants/shipped-routes";
-const footerBgElements = "/static/assets/footer/footer-bg-elements.svg";
-const zynetoLogo = "/static/assets/zynetoLogo.svg";
+const zynetoLogo = "/static/assets/zynetoLogoDark.svg";
 const certificate1 = "/static/assets/footer/cert1.svg";
 const certificate2 = "/static/assets/footer/cert2.svg";
 const upworkCertificate = "/static/assets/footer/upwork.svg";
@@ -199,18 +198,7 @@ const Footer: React.FC = () => {
   ].filter((column) => column.links.length > 0);
 
   return (
-    <footer className="relative bg-linear-to-br from-gray-900 via-black to-gray-900 text-white overflow-hidden">
-      <div className="absolute bottom-0 left-0 w-full h-fit">
-        <Image
-          src={footerBgElements}
-          alt=""
-          width={1920}
-          height={280}
-          aria-hidden
-          className="object-contain w-full h-fit opacity-50"
-          draggable={false}
-        />
-      </div>
+    <footer className="relative border-t border-black/10 bg-white text-[#161616] overflow-hidden">
       <div className="relative container mx-auto px-4 pt-12 lg:pt-20 pb-6 lg:pb-8 overflow-x-hidden">
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-12 mb-16">
           <div className="lg:col-span-2 space-y-6">
@@ -226,17 +214,17 @@ const Footer: React.FC = () => {
               />
             </Link>
             <div className="space-y-4">
-              <p className="text-lg md:text-xl text-gray-100 leading-relaxed max-w-2xl">
+              <p className="text-lg md:text-xl text-[#161616] leading-relaxed max-w-2xl">
                 We build software that has to work in production, not just in a
                 demo.
               </p>
-              <p className="text-sm text-gray-400 max-w-xl">
+              <p className="text-sm text-[#616161] max-w-xl">
                 AI and machine learning systems, mobile apps, web platforms,
                 and the interfaces that run on top of them.
               </p>
             </div>
             <div className="pt-4">
-              <h4 className="text-sm font-semibold text-gray-200 mb-4 uppercase tracking-wide">
+              <h4 className="text-sm font-semibold text-[#161616] mb-4 uppercase tracking-wide">
                 Trusted By Industry Leaders
               </h4>
               <div className="flex flex-wrap gap-6 justify-start">
@@ -275,7 +263,7 @@ const Footer: React.FC = () => {
                       alt={cert.alt}
                       width={80}
                       height={48}
-                      className="h-9 w-auto object-contain group-hover:scale-110 transition-transform duration-300 filter brightness-90 group-hover:brightness-110"
+                      className="h-9 w-auto rounded-md border border-black/10 bg-white object-contain px-1.5 py-1 shadow-sm transition-transform duration-300 group-hover:scale-105"
                     />
                   </Link>
                 ))}
@@ -283,7 +271,7 @@ const Footer: React.FC = () => {
             </div>
           </div>
           <div className="space-y-6">
-            <h4 className="text-xl font-bold text-white">Get In Touch</h4>
+            <h4 className="text-xl font-bold text-[#161616]">Get In Touch</h4>
             <div className="space-y-4">
               <div className="flex items-start gap-3 group">
                 <FaPhone
@@ -292,7 +280,7 @@ const Footer: React.FC = () => {
                 />
                 <Link
                   href={COMPANY_CONTACT.phoneHref}
-                  className="text-white hover:text-[#FF0044] transition-colors"
+                  className="text-[#161616] hover:text-[#9900FF] transition-colors"
                   aria-label="Call +91-95096-25345"
                 >
                   {COMPANY_CONTACT.phone}
@@ -305,7 +293,7 @@ const Footer: React.FC = () => {
                 />
                 <Link
                   href={COMPANY_CONTACT.emailHref}
-                  className="text-white hover:text-[#FF0044] transition-colors"
+                  className="text-[#161616] hover:text-[#9900FF] transition-colors"
                   aria-label={`Email ${email}`}
                 >
                   {email}
@@ -316,13 +304,13 @@ const Footer: React.FC = () => {
                   className="text-[#FF0044] mt-1 group-hover:scale-110 transition-transform shrink-0"
                   size={16}
                 />
-                <address className="not-italic text-white text-sm">
+                <address className="not-italic text-[#161616] text-sm">
                   {COMPANY_CONTACT.addressLines[0]}
                 </address>
               </div>
             </div>
             <div className="pt-4">
-              <h5 className="text-sm font-semibold text-gray-200 mb-4 uppercase tracking-wide">
+              <h5 className="text-sm font-semibold text-[#161616] mb-4 uppercase tracking-wide">
                 Follow Us
               </h5>
               <div className="flex gap-3">
@@ -333,9 +321,9 @@ const Footer: React.FC = () => {
                     target="_blank"
                     rel="noopener noreferrer nofollow"
                     aria-label={social.label}
-                    className="group relative w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center rounded-xl bg-gray-800 border border-gray-700 hover:border-[#FF0044] transition-all duration-300 hover:scale-110"
+                    className="group relative w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center rounded-xl bg-[#F6F6F8] border border-black/10 hover:border-[#9900FF] transition-all duration-300 hover:scale-105"
                   >
-                    <span className="text-gray-300 group-hover:text-[#FF0044] transition-colors text-lg">
+                    <span className="text-[#161616] group-hover:text-[#9900FF] transition-colors text-lg">
                       {social.icon}
                     </span>
                     <div className="absolute inset-0 rounded-xl bg-linear-to-r from-[#FF0044] via-[#FF732D] to-[#9900FF] opacity-0 group-hover:opacity-20 transition-opacity"></div>
@@ -354,9 +342,9 @@ const Footer: React.FC = () => {
             />
           ))}
         </div>
-        <div className="border-t border-gray-700 pt-6 lg:pt-8">
+        <div className="border-t border-black/10 pt-6 lg:pt-8">
           <div className="flex justify-between items-center flex-col sm:flex-row gap-4">
-            <p className="text-sm text-gray-400 sm:text-left text-center">
+            <p className="text-sm text-[#616161] sm:text-left text-center">
               © {new Date().getFullYear()} Zyneto Global Technologies. All
               rights reserved.
             </p>
@@ -365,16 +353,16 @@ const Footer: React.FC = () => {
 
               <Link
                 href="/privacy-policy"
-                className="text-sm text-gray-400 hover:text-[#FF0044] transition-colors"
+                className="text-sm text-[#616161] hover:text-[#9900FF] transition-colors"
               >
                 Privacy Policy
               </Link>
 
-              <span className="hidden sm:inline text-sm text-gray-400">|</span>
+              <span className="hidden sm:inline text-sm text-[#616161]">|</span>
 
               <Link
                 href="/terms-conditions"
-                className="text-sm text-gray-400 hover:text-[#FF0044] transition-colors"
+                className="text-sm text-[#616161] hover:text-[#9900FF] transition-colors"
               >
                 Terms & Conditions
               </Link>
@@ -396,7 +384,7 @@ const FooterColumn: React.FC<{ title: string; links: LinkItem[] }> = ({
   links,
 }) => (
   <div className="space-y-3">
-    <h3 className="font-bold text-lg text-white relative whitespace-nowrap">
+    <h3 className="font-bold text-lg text-[#161616] relative whitespace-nowrap">
       {title}
       <div className="absolute -bottom-1 left-0 w-12 h-px bg-linear-to-br from-[#FF0044] via-[#FF732D] to-[#9900FF] rounded"></div>
     </h3>
@@ -406,7 +394,7 @@ const FooterColumn: React.FC<{ title: string; links: LinkItem[] }> = ({
           <Link
             href={link.url}
             aria-label={link.label}
-            className="text-sm text-gray-300 hover:text-[#FF0044] transition-colors duration-300 hover:translate-x-1 inline-block py-1"
+            className="text-sm text-[#3A3A3A] hover:text-[#9900FF] transition-colors duration-300 hover:translate-x-1 inline-block py-1"
           >
             {link.label}
           </Link>
