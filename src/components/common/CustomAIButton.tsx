@@ -7,7 +7,7 @@ const CustomAIButton = () => {
     <Link
       href="/services/artificial-intelligence"
       aria-label="Explore Zyneto AI services"
-      className="ai-hub-btn flex rounded-full cursor-pointer w-max items-center gap-2 p-[2px] pl-3 md:pl-4 text-[12px] md:text-[16px] font-medium"
+      className="ai-hub-btn flex rounded-full cursor-pointer w-max max-w-full items-center gap-2 p-[2px] pl-3 md:pl-4 text-[12px] md:text-[16px] font-medium"
     >
       <IoSparkles
         aria-hidden="true"
