@@ -1,0 +1,68 @@
+export const IMAGE_VARIANTS: Record<string, number[]> = {
+  "/static/assets/about-us/about-bg.webp": [960, 2400],
+  "/static/assets/home/qualityAssure/quality-assurance.webp": [960, 1500],
+  "/static/assets/services/about/agentic-ai-development.webp": [960, 1200],
+  "/static/assets/services/about/ai-chatbot-development-company.webp": [960, 1200],
+  "/static/assets/services/about/ai-copilot-development.webp": [960, 1200],
+  "/static/assets/services/about/ai-document-management-services.webp": [960, 1200],
+  "/static/assets/services/about/ai-workflow-automation-services.webp": [960, 1200],
+  "/static/assets/services/about/android-app-development.webp": [960, 1200],
+  "/static/assets/services/about/angular-development.webp": [960, 1200],
+  "/static/assets/services/about/artificial-intelligence.webp": [960, 1200],
+  "/static/assets/services/about/blockchain-development.webp": [960, 1200],
+  "/static/assets/services/about/chat-with-documents-solution.webp": [960, 1200],
+  "/static/assets/services/about/ci-cd-development.webp": [960, 1200],
+  "/static/assets/services/about/database-development.webp": [960, 1200],
+  "/static/assets/services/about/django-development.webp": [960, 1200],
+  "/static/assets/services/about/fastapi-development-company.webp": [960, 1200],
+  "/static/assets/services/about/flask-development.webp": [960, 1200],
+  "/static/assets/services/about/flutter-app-development.webp": [960, 1200],
+  "/static/assets/services/about/generative-ai.webp": [960, 1200],
+  "/static/assets/services/about/ios-app-development.webp": [960, 1200],
+  "/static/assets/services/about/iot-development.webp": [960, 1200],
+  "/static/assets/services/about/mobile-app-development.webp": [960, 1200],
+  "/static/assets/services/about/multimodal-ai-development.webp": [960, 1200],
+  "/static/assets/services/about/next-js-development.webp": [960, 1200],
+  "/static/assets/services/about/nlp-development.webp": [960, 1200],
+  "/static/assets/services/about/nodejs-development.webp": [960, 1200],
+  "/static/assets/services/about/pos-app-development.webp": [960, 1200],
+  "/static/assets/services/about/predictive-analytics-development.webp": [960, 1200],
+  "/static/assets/services/about/python-development.webp": [960, 1200],
+  "/static/assets/services/about/react-native-development.webp": [960, 1200],
+  "/static/assets/services/about/reactjs-development.webp": [960, 1200],
+  "/static/assets/services/about/smart-contract-development-services.webp": [960, 1200],
+  "/static/assets/services/about/ui-ux-design.webp": [960, 1200],
+  "/static/assets/services/about/web-development.webp": [960, 1200],
+  "/static/assets/services/about/web-scraping-data-extraction-services.webp": [960, 1200],
+  "/static/assets/solutions/about/classified-app-development.webp": [960, 1920],
+  "/static/assets/solutions/about/dating-app-development-company.webp": [960, 1920],
+  "/static/assets/solutions/about/ecommerce-app-development.webp": [960, 1920],
+  "/static/assets/solutions/about/fantasy-sports-app-development-company.webp": [960, 1920],
+  "/static/assets/solutions/about/music-streaming-app-development-company.webp": [960, 1920],
+  "/static/assets/solutions/about/restaurant-app-development-company.webp": [960, 1920],
+  "/static/assets/solutions/features/advanced-features.webp": [960, 1920],
+  "/static/assets/solutions/features/customer-panel.webp": [960, 1920],
+  "/static/assets/solutions/features/user-panel.webp": [960, 1920],
+  "/static/assets/solutions/hero/classified-app-development.webp": [400, 800, 960, 1440, 1920],
+  "/static/assets/solutions/hero/dating-app-development-company.webp": [400, 800, 960, 1920],
+  "/static/assets/solutions/hero/ecommerce-app-development.webp": [400, 800, 960, 1440, 1920],
+  "/static/assets/solutions/hero/fantasy-sports-app-development-company.webp": [400, 800, 960, 1440, 1920],
+  "/static/assets/solutions/hero/music-streaming-app-development-company.webp": [400, 800, 960, 1440, 1920],
+  "/static/assets/solutions/hero/restaurant-app-development-company.webp": [800, 960, 1440, 1920],
+  "/static/assets/solutions/hire/classified-app-development.webp": [960, 1920],
+  "/static/assets/solutions/hire/dating-app-development-company.webp": [960, 1920],
+  "/static/assets/solutions/hire/ecommerce-app-development.webp": [960, 1920],
+  "/static/assets/solutions/hire/fantasy-sports-app-development-company.webp": [960, 1920],
+  "/static/assets/solutions/hire/music-streaming-app-development-company.webp": [960, 1920],
+  "/static/assets/solutions/hire/restaurant-app-development-company.webp": [960, 1920],
+};
+
+export function buildSrcSet(src: string): string | undefined {
+  const widths = IMAGE_VARIANTS[src];
+  if (!widths || widths.length < 2) return undefined;
+  const base = src.replace(/\.webp$/, "");
+  const largest = widths[widths.length - 1];
+  return widths
+    .map((w) => `${w === largest ? src : `${base}-${w}.webp`} ${w}w`)
+    .join(", ");
+}

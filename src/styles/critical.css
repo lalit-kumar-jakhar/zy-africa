@@ -1,0 +1,170 @@
+/* Critical CSS for above-the-fold content only */
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: calc(var(--nav-height) + 16px);
+}
+
+:root {
+  --background-color: #202020;
+  --foreground-color: #171717;
+  --nav-height: 72px;
+}
+
+body {
+  background: var(--background-color);
+  color: var(--foreground-color);
+  font-family: "Inter", sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.text-yellow-orange-gradient {
+  background: linear-gradient(-135deg, #ff732d, #ff0044, #9900ff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.gradient-bg-btn {
+  background: linear-gradient(-135deg, #ff732d, #ff0044, #9900ff);
+  padding: 10px 24px;
+  color: white;
+  border: none;
+  cursor: pointer;
+  width: max-content;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 24px;
+  transition: 0.5s;
+  box-shadow: inset 0 0 15px rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+
+.layout-stable {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.content-area {
+  flex: 1;
+  contain: layout;
+}
+
+.cls-prevention {
+  aspect-ratio: attr(width) / attr(height);
+  width: 100%;
+  height: auto;
+}
+
+.grecaptcha-badge {
+  visibility: hidden !important;
+}
+
+/* Minimal critical blog content styles to avoid FOUC while loading full blog.css non-blocking */
+.detailDataBlogContent {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.detailDataBlogContent p,
+.detailDataBlogContent li {
+  font-weight: 400;
+  font-size: 18px;
+  color: var(--blog-detail-text-color, #000);
+}
+.detailDataBlogContent h2 {
+  margin-top: 18px;
+  margin-bottom: -5px;
+  font-weight: 600;
+  font-size: 26px;
+  color: var(--blog-detail-text-color, #000);
+}
+.detailDataBlogContent h3 {
+  margin-top: 18px;
+  margin-bottom: -5px;
+  font-weight: 500;
+  font-size: 22px;
+  color: var(--blog-detail-text-color, #000);
+}
+.detailDataBlogContent h4 {
+  margin-top: 5px;
+  margin-bottom: -5px;
+  font-weight: 600;
+  font-size: 20px;
+  color: var(--blog-detail-text-color, #000);
+}
+.detailDataBlogContent h5 {
+  margin-top: 5px;
+  margin-bottom: -5px;
+  font-weight: 600;
+  font-size: 18px;
+  color: var(--blog-detail-text-color, #000);
+}
+/* Ensure headings account for fixed header */
+.detailDataBlogContent h2,
+.detailDataBlogContent h3,
+.detailDataBlogContent h4,
+.detailDataBlogContent h5 {
+  scroll-margin-top: calc(var(--nav-height) + 16px);
+}
+
+@media screen and (max-width: 768px) {
+  html {
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+  }
+
+  body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeSpeed;
+  }
+
+  .container {
+    contain: layout !important;
+  }
+
+  button,
+  a,
+  [role="button"] {
+    touch-action: manipulation !important;
+    -webkit-tap-highlight-color: transparent !important;
+  }
+
+  .gradient-bg-btn {
+    contain: layout !important;
+    will-change: transform !important;
+    transform: translateZ(0) !important;
+  }
+
+  .text-yellow-orange-gradient {
+    contain: layout !important;
+    will-change: auto !important;
+  }
+
+  html,
+  body {
+    -webkit-overflow-scrolling: touch !important;
+    overscroll-behavior: auto !important;
+  }
+
+  img {
+    content-visibility: auto !important;
+    /* "auto" makes the browser remember each image's real rendered size once
+       known, instead of permanently forcing a 300x200 box on every image
+       regardless of its actual aspect ratio (causes layout shift on scroll-in). */
+    contain-intrinsic-size: auto 300px auto 200px !important;
+  }
+
+  input,
+  textarea,
+  select {
+    font-size: 16px !important;
+    transform: translateZ(0) !important;
+  }
+}

@@ -1,0 +1,7 @@
+User-agent: *
+Disallow: /api/
+Disallow: /admin/
+Disallow: /login/
+
+Sitemap: https://zyneto.com/sitemap.xml
+Sitemap: https://zyneto.com/sitemap_services.xml

@@ -1,0 +1,27 @@
+.cardHoverEffect {
+  position: relative;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.cardHoverEffect::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 0%;
+  width: 100%;
+  background: linear-gradient(-135deg, #ff732d, #ff0044, #9900ff);
+  z-index: -1;
+  transition: height 0.2s ease-in-out;
+}
+
+.cardHoverEffect:hover::before {
+  height: 100%;
+}
+
+@media (hover: none) and (pointer: coarse) {
+  .cardHoverEffect::before {
+    display: none;
+  }
+}

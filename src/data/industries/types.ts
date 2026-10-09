@@ -1,0 +1,56 @@
+import type { ComponentProps } from "react";
+import type AnchorNav from "@/components/industries/AnchorNav";
+import type IndustriesTop from "@/components/industries/IndustriesTop";
+import type EssenceSection from "@/components/industries/sections/EssenceSection";
+import type SegmentsSection from "@/components/industries/sections/SegmentsSection";
+import type SubVerticalsSection from "@/components/industries/sections/SubVerticalsSection";
+import type OperationsMapSection from "@/components/industries/sections/OperationsMapSection";
+import type SystemsSection from "@/components/industries/sections/SystemsSection";
+import type RetailBoundarySection from "@/components/industries/sections/RetailBoundarySection";
+import type ComplianceSection from "@/components/industries/sections/ComplianceSection";
+import type OurWorkSection from "@/components/industries/sections/OurWorkSection";
+import type WhatGoesWrongSection from "@/components/industries/sections/WhatGoesWrongSection";
+import type BuildOrBuySection from "@/components/industries/sections/BuildOrBuySection";
+import type CostSection from "@/components/industries/sections/CostSection";
+import type EngagementSection from "@/components/industries/sections/EngagementSection";
+import type DeliverySection from "@/components/industries/sections/DeliverySection";
+import type NonFunctionalSection from "@/components/industries/sections/NonFunctionalSection";
+import type IndustryClosingSection from "@/components/industries/sections/IndustryClosingSection";
+import type HubLinksSection from "@/components/industries/sections/HubLinksSection";
+import type AdvServices from "@/components/services/AdvServices";
+import type FaqSection from "@/components/home/FaqSection/FaqSection";
+
+export type IndustryPageData = {
+  heroSection: ComponentProps<typeof IndustriesTop>["heroSection"];
+  essence: ComponentProps<typeof EssenceSection>["essence"];
+  anchors: ComponentProps<typeof AnchorNav>["anchors"];
+  segments: ComponentProps<typeof SegmentsSection>["segments"];
+  subVerticals: ComponentProps<typeof SubVerticalsSection>["subVerticals"];
+  systems: ComponentProps<typeof SystemsSection>["systems"];
+  compliance: ComponentProps<typeof ComplianceSection>["compliance"];
+  ourWork?: ComponentProps<typeof OurWorkSection>["ourWork"];
+  whatGoesWrong: ComponentProps<typeof WhatGoesWrongSection>["whatGoesWrong"];
+  buildOrBuy: ComponentProps<typeof BuildOrBuySection>["buildOrBuy"];
+  cost: ComponentProps<typeof CostSection>["cost"];
+  costHighlights: ComponentProps<typeof CostSection>["highlights"];
+  engagement: ComponentProps<typeof EngagementSection>["engagement"];
+  delivery: ComponentProps<typeof DeliverySection>["delivery"];
+  nonFunctional: ComponentProps<typeof NonFunctionalSection>["nonFunctional"];
+  faqs: ComponentProps<typeof FaqSection>["faqSection"];
+  nextSteps: ComponentProps<typeof IndustryClosingSection>["nextSteps"];
+  hubLinks: ComponentProps<typeof HubLinksSection>["hubLinks"];
+  relatedPosts: string[];
+  relatedHeading: { title: string; description: string };
+  ctaBands: {
+    mid: ComponentProps<typeof AdvServices>["advertisement"];
+    end: ComponentProps<typeof IndustryClosingSection>["endCta"];
+  };
+  seo?: {
+    readonly primaryKeyword: string;
+    readonly intent: "commercial" | "transactional" | "informational";
+    readonly secondaryKeywords: readonly string[];
+    readonly competingUrl: string | null;
+  };
+  operations?: ComponentProps<typeof OperationsMapSection>["operations"];
+  retailBoundary?: ComponentProps<typeof RetailBoundarySection>["retailBoundary"];
+};

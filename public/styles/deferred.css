@@ -1,0 +1,126 @@
+/* Non-critical CSS - loaded after above-the-fold content */
+
+.text-gradient-hover {
+  transition: linear 0.3s ease-in-out;
+}
+
+.text-gradient-hover:hover {
+  background: linear-gradient(-135deg, #ff732d, #ff0044, #9900ff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.text-navlink-gradient-hover {
+  transition: background 0.3s ease-in-out;
+}
+
+.text-navlink-gradient-hover:hover,
+.group:hover .text-navlink-gradient-hover {
+  background: linear-gradient(-135deg, #ff732d, #ff0044, #9900ff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.gradient-bg-btn:hover {
+  color: #fff;
+  text-decoration: none;
+}
+
+.gradientLinkArrowIconbtn {
+  background: linear-gradient(-135deg, #ff732d, #ff0044, #9900ff);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (max-width: 640px) {
+  .gradientLinkArrowIconbtn {
+    width: 30px;
+    height: 30px;
+  }
+}
+
+video::cue {
+  display: none !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+}
+
+.custom-scroll-navbar {
+  scrollbar-width: thin;
+  scrollbar-color: #a1a1a177 #555555e0;
+}
+
+.custom-scroll-navbar::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+
+.custom-scroll-navbar::-webkit-scrollbar-thumb {
+  background-color: #a1a1a177;
+  border-radius: 4px;
+}
+
+.custom-scroll-navbar::-webkit-scrollbar-track {
+  background-color: #555555e0;
+}
+
+.custom-scroll-blog {
+  scrollbar-width: thin;
+  scrollbar-color: #a4a4a4e0 #dbdbdb77;
+}
+
+.custom-scroll-blog::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+
+.custom-scroll-blog::-webkit-scrollbar-thumb {
+  background-color: #a4a4a4e0;
+  border-radius: 4px;
+}
+
+.custom-scroll-blog::-webkit-scrollbar-track {
+  background-color: #dbdbdb77;
+}
+
+.work-feature-tabs-inactive {
+  color: black;
+}
+
+.work-feature-tabs-inactive:hover {
+  background: linear-gradient(-135deg, #ff732d, #ff0044, #9900ff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent !important;
+}
+
+@keyframes fadeInImageTabs {
+  0% {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animate-fadeIn-tabsImage {
+  animation: fadeInImageTabs 0.6s ease-in-out;
+}
+
+.ant-modal-content {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 0 !important;
+}
