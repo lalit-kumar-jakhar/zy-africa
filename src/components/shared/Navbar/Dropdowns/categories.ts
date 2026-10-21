@@ -272,6 +272,8 @@ export const categories = {
       icon: datingAppIcon,
       url: "/solutions/dating-app-development-company",
       backgroundImage: datingAppHeroBackgroundImage,
+      summary:
+        "AI matchmaking, real-time chat and monetisation, built for iOS, Android and web.",
     },
     {
       label: "Fantasy Sports App Development",

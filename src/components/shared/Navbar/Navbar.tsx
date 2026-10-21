@@ -11,7 +11,7 @@ import { useModal } from "@/context/ModalContext";
 import { FaChevronDown, FaChevronUp } from "react-icons/fa";
 import { liveIndustries } from "@/constants/feature-flags";
 import { useIdlePrefetch } from "@/hooks/useIdlePrefetch";
-import { firstTabIcons } from "./Dropdowns/navAssets";
+import { navPrefetchAssets } from "./Dropdowns/navAssets";
 import CustomAIButton from "@/components/common/CustomAIButton";
 const zynetoLogo = "/static/assets/zynetoLogoDark.svg";
 
@@ -44,7 +44,7 @@ const Navbar: React.FC = () => {
   const dropdownRef = useRef<HTMLDivElement>(null);
   const pathname = usePathname();
 
-  useIdlePrefetch(useMemo(() => firstTabIcons(), []));
+  useIdlePrefetch(useMemo(() => navPrefetchAssets(), []));
 
   // Reset open menus on route change during render, not in an effect: that
   // avoids an extra post-navigation render pass.
