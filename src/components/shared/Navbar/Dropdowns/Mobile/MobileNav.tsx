@@ -5,6 +5,7 @@ import ServicesNavMobile from "./ServicesNavMobile";
 import SolutionsNavMobile from "./SolutionsNavMobile";
 import IndustriesNavMobile from "./IndustriesNavMobile";
 import { BiMinus, BiPlus } from "react-icons/bi";
+import { FaArrowRight } from "react-icons/fa6";
 import { motion, AnimatePresence } from "framer-motion";
 import { useModal } from "@/context/ModalContext";
 import { liveIndustries } from "@/constants/feature-flags";
@@ -159,9 +160,10 @@ const MobileNav: React.FC<MobileNavProps> = ({ closeMobileMenu }) => {
                           <Link
                             href={dropdownIndexPaths[item.title]}
                             onClick={closeMobileMenu}
-                            className="mb-2 block rounded-xl border border-black/10 px-3 py-2.5 text-[14px] font-medium text-[#161616] transition hover:bg-black/5"
+                            className="mb-1 inline-flex items-center gap-2 border-b border-[#111111]/20 pb-0.5 text-[14px] font-medium text-[#111111]"
                           >
-                            All {item.title.toLowerCase()}
+                            View all {item.title.toLowerCase()}
+                            <FaArrowRight className="text-[10px]" />
                           </Link>
                           {renderDropdown(item.title)}
                         </motion.div>
