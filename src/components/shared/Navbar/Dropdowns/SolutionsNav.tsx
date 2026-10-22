@@ -149,7 +149,7 @@ const SolutionsNav: React.FC<SolutionsNavProps> = ({ closeNavBottom }) => {
           <Link
             href="/contact-us"
             onClick={closeNavBottom}
-            className="group flex w-full items-center justify-center gap-2 rounded-full bg-linear-to-r from-[#ff732d] via-[#ff0044] to-[#9900ff] px-6 py-3 text-[15px] font-semibold text-white shadow-[0_8px_20px_-8px_rgba(153,0,255,0.55)] transition-shadow duration-200 hover:text-white hover:shadow-[0_10px_24px_-6px_rgba(153,0,255,0.65)]"
+            className="group flex w-full items-center justify-center gap-2 rounded-full bg-linear-to-r from-[#ff732d] via-[#ff0044] to-[#9900ff] px-6 py-3 text-[15px] font-semibold text-white duration-200 hover:text-white"
           >
             Discuss your product
             <FaArrowRight className="text-[11px] transition-transform duration-200 group-hover:translate-x-0.5" />
