@@ -130,7 +130,7 @@ const HomeTopArea: React.FC = () => {
           className="pointer-events-none absolute -bottom-24 left-[10%] h-64 w-64 rounded-full bg-[#ff0044]/20 blur-[90px]"
         />
 
-        <div className="absolute left-1/2 top-0 z-10 hidden h-22 w-255 -translate-x-1/2 xl:block">
+        <div className="absolute left-1/2 top-0 z-20 hidden h-22 w-255 -translate-x-1/2 xl:block">
         <svg
           aria-hidden
           viewBox="0 0 1020 88"
