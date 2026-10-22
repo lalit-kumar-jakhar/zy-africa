@@ -2,7 +2,7 @@
 import React, { useMemo } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { FaArrowRight } from "react-icons/fa6";
+import SquiggleArrow from "@/components/common/SquiggleArrow";
 import { solutionNavItems } from "./navGroups";
 import { usePrefetchOnIntent } from "@/hooks/usePrefetchOnIntent";
 
@@ -72,7 +72,7 @@ const SolutionsNav: React.FC<SolutionsNavProps> = ({ closeNavBottom }) => {
             )}
             <span className="mt-auto inline-flex w-fit items-center gap-2 rounded-full bg-white px-5 py-2.5 text-[13px] font-semibold text-[#111111] transition-colors duration-200 group-hover:bg-linear-to-r group-hover:from-[#ff732d] group-hover:via-[#ff0044] group-hover:to-[#9900ff] group-hover:text-white">
               Explore solution
-              <FaArrowRight className="text-[10px] transition-transform duration-200 group-hover:translate-x-0.5" />
+              <SquiggleArrow size="md" />
             </span>
           </div>
         </Link>
@@ -111,10 +111,7 @@ const SolutionsNav: React.FC<SolutionsNavProps> = ({ closeNavBottom }) => {
                         {item.label}
                       </span>
                     </span>
-                    <FaArrowRight
-                      className="shrink-0 -translate-x-1 text-[11px] text-[#9900FF] opacity-0 transition-all duration-200 group-hover:translate-x-0 group-hover:opacity-100"
-                      aria-hidden
-                    />
+                    <SquiggleArrow size="sm" className="text-[#9900FF] opacity-0 group-hover:opacity-100" />
                   </Link>
                 </li>
               ))}
@@ -152,7 +149,7 @@ const SolutionsNav: React.FC<SolutionsNavProps> = ({ closeNavBottom }) => {
             className="group flex w-full items-center justify-center gap-2 rounded-full bg-linear-to-r from-[#ff732d] via-[#ff0044] to-[#9900ff] px-6 py-3 text-[15px] font-semibold text-white duration-200 hover:text-white"
           >
             Discuss your product
-            <FaArrowRight className="text-[11px] transition-transform duration-200 group-hover:translate-x-0.5" />
+            <SquiggleArrow size="md" />
           </Link>
           <Link
             href="/solutions"
@@ -163,7 +160,7 @@ const SolutionsNav: React.FC<SolutionsNavProps> = ({ closeNavBottom }) => {
             className="group flex w-full items-center justify-center gap-1.5 rounded-full border border-[#E6E4EA] bg-white px-6 py-2.5 text-[13px] font-medium text-[#111111] transition-colors hover:border-[#9900FF]/40 hover:text-[#9900FF]"
           >
             View all solutions
-            <FaArrowRight className="text-[9px] transition-transform duration-200 group-hover:translate-x-0.5" />
+            <SquiggleArrow size="sm" />
           </Link>
         </div>
       </aside>

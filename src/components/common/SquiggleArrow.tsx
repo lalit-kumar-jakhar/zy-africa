@@ -1,15 +1,22 @@
+const SIZES = {
+  sm: "h-3 w-7",
+  md: "h-4 w-9",
+  lg: "h-5 w-11",
+};
+
 interface SquiggleArrowProps {
+  size?: keyof typeof SIZES;
   className?: string;
 }
 
 /** Hand-drawn arrow that plays `jello-vertical` when an ancestor with the `group` class is hovered. */
-const SquiggleArrow = ({ className = "" }: SquiggleArrowProps) => (
+const SquiggleArrow = ({ size = "lg", className = "" }: SquiggleArrowProps) => (
   <svg
     aria-hidden
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 38 15"
     fill="none"
-    className={`h-5 w-11 shrink-0 origin-left transition-[translate] duration-300 motion-safe:group-hover:translate-x-1 motion-safe:group-hover:animate-jello-vertical motion-safe:group-focus-visible:translate-x-1 motion-safe:group-focus-visible:animate-jello-vertical ${className}`}
+    className={`${SIZES[size]} shrink-0 origin-left transition-[translate,opacity,color] duration-300 motion-safe:group-hover:translate-x-1 motion-safe:group-hover:animate-jello-vertical motion-safe:group-focus-visible:translate-x-1 motion-safe:group-focus-visible:animate-jello-vertical ${className}`}
   >
     <path
       fill="currentColor"

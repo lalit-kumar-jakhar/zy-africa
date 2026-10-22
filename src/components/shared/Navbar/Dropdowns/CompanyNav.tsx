@@ -185,7 +185,7 @@ const CompanyNav: React.FC<{ closeNavBottom?: () => void }> = ({
 
               <div className="mt-5 flex items-center gap-2 border-t border-[#EFEFF2] pt-3.5 text-[13px] font-medium text-[#111111] transition-colors duration-200 group-hover:border-white/25 group-hover:text-white">
                 <span>{item.cta}</span>
-                <SquiggleArrow className="h-2.5 w-6 text-[#8A8A8E] transition-colors duration-200 group-hover:text-white" />
+                <SquiggleArrow size="sm" className="text-[#8A8A8E] group-hover:text-white" />
               </div>
             </Link>
           ))}

@@ -87,7 +87,7 @@ function IndustryCard({
         </p>
         <span className="mt-5 inline-flex items-center gap-1.5 text-[13px] font-medium text-[#616161] transition-colors duration-300 group-hover:text-[#9900ff]">
           Explore
-          <SquiggleArrow className="h-2.5 w-6" />
+          <SquiggleArrow size="sm" />
         </span>
       </div>
     </Link>

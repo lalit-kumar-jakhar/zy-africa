@@ -2,7 +2,7 @@
 import React, { useMemo } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { FaArrowRight } from "react-icons/fa6";
+import SquiggleArrow from "@/components/common/SquiggleArrow";
 import { serviceNavGroups } from "./navGroups";
 import { usePrefetchOnIntent } from "@/hooks/usePrefetchOnIntent";
 
@@ -55,7 +55,7 @@ const ServicesNav: React.FC<ServicesNavProps> = ({ closeNavBottom }) => {
             className="group mt-6 inline-flex items-center gap-2 rounded-full bg-white px-4 py-2 text-[13px] font-medium text-[#111111] transition-colors hover:bg-white/90"
           >
             View all services
-            <FaArrowRight className="text-[10px] transition-transform duration-200 group-hover:translate-x-0.5" />
+            <SquiggleArrow size="sm" />
           </Link>
         </div>
 
@@ -69,7 +69,7 @@ const ServicesNav: React.FC<ServicesNavProps> = ({ closeNavBottom }) => {
           </p>
           <p className="mt-1 flex items-center gap-2 text-[14px] font-medium">
             Talk to an engineer
-            <FaArrowRight className="text-[10px] transition-transform duration-200 group-hover:translate-x-0.5" />
+            <SquiggleArrow size="sm" />
           </p>
         </Link>
       </aside>
@@ -116,10 +116,7 @@ const ServicesNav: React.FC<ServicesNavProps> = ({ closeNavBottom }) => {
                           </span>
                         )}
                       </span>
-                      <FaArrowRight
-                        className="shrink-0 -translate-x-1 text-[11px] text-[#9900FF] opacity-0 transition-all duration-200 group-hover:translate-x-0 group-hover:opacity-100"
-                        aria-hidden
-                      />
+                      <SquiggleArrow size="sm" className="text-[#9900FF] opacity-0 group-hover:opacity-100" />
                     </Link>
                   </li>
                 ))}
@@ -144,7 +141,7 @@ const ServicesNav: React.FC<ServicesNavProps> = ({ closeNavBottom }) => {
           </span>
           <span className="flex shrink-0 items-center gap-1.5 text-[13px] font-medium text-[#9900FF]">
             Browse case studies
-            <FaArrowRight className="text-[10px] transition-transform duration-200 group-hover:translate-x-0.5" />
+            <SquiggleArrow size="sm" />
           </span>
         </Link>
       </div>
