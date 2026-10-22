@@ -25,6 +25,32 @@
   --color-gray-700: #4a5568;
   --color-gray-800: #2d3748;
   --color-gray-900: #1a202c;
+
+  --animate-jello-vertical: jello-vertical 0.9s both;
+
+  @keyframes jello-vertical {
+    0% {
+      transform: scale3d(1, 1, 1);
+    }
+    30% {
+      transform: scale3d(0.75, 1.25, 1);
+    }
+    40% {
+      transform: scale3d(1.25, 0.75, 1);
+    }
+    50% {
+      transform: scale3d(0.85, 1.15, 1);
+    }
+    65% {
+      transform: scale3d(1.05, 0.95, 1);
+    }
+    75% {
+      transform: scale3d(0.95, 1.05, 1);
+    }
+    100% {
+      transform: scale3d(1, 1, 1);
+    }
+  }
 }
 
 /* Reveal: load-time fade-in used by src/components/common/Reveal.tsx.
@@ -696,49 +722,6 @@ section.offer-ticker {
 @media (prefers-reduced-motion: reduce) {
   .hero-float,
   .hero-caret {
-    animation: none;
-  }
-}
-
-@keyframes jello-vertical {
-  0% {
-    transform: scale3d(1, 1, 1);
-  }
-  30% {
-    transform: scale3d(0.75, 1.25, 1);
-  }
-  40% {
-    transform: scale3d(1.25, 0.75, 1);
-  }
-  50% {
-    transform: scale3d(0.85, 1.15, 1);
-  }
-  65% {
-    transform: scale3d(1.05, 0.95, 1);
-  }
-  75% {
-    transform: scale3d(0.95, 1.05, 1);
-  }
-  100% {
-    transform: scale3d(1, 1, 1);
-  }
-}
-
-.squiggle-arrow {
-  transform-origin: left center;
-  transition: translate 0.3s ease;
-}
-
-.group:hover .squiggle-arrow,
-.group:focus-visible .squiggle-arrow {
-  translate: 4px 0;
-  animation: jello-vertical 0.9s both;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .group:hover .squiggle-arrow,
-  .group:focus-visible .squiggle-arrow {
-    translate: none;
     animation: none;
   }
 }

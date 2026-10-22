@@ -2,14 +2,14 @@ interface SquiggleArrowProps {
   className?: string;
 }
 
-/** Hand-drawn arrow that wobbles when an ancestor with the `group` class is hovered. */
+/** Hand-drawn arrow that plays `jello-vertical` when an ancestor with the `group` class is hovered. */
 const SquiggleArrow = ({ className = "" }: SquiggleArrowProps) => (
   <svg
     aria-hidden
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 38 15"
     fill="none"
-    className={`squiggle-arrow h-5 w-11 shrink-0 ${className}`}
+    className={`h-5 w-11 shrink-0 origin-left transition-[translate] duration-300 motion-safe:group-hover:translate-x-1 motion-safe:group-hover:animate-jello-vertical motion-safe:group-focus-visible:translate-x-1 motion-safe:group-focus-visible:animate-jello-vertical ${className}`}
   >
     <path
       fill="currentColor"
