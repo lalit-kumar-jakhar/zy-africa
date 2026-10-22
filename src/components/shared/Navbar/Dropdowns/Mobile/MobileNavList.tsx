@@ -1,8 +1,15 @@
 "use client";
 import Link from "next/link";
+import Image from "next/image";
 import { FaArrowRight } from "react-icons/fa6";
 
-export type MobileNavEntry = { url: string; label: string; live: boolean };
+export type MobileNavEntry = {
+  url: string;
+  label: string;
+  live: boolean;
+  icon?: string;
+  summary?: string;
+};
 
 export function MobileNavList({
   heading,
@@ -16,32 +23,46 @@ export function MobileNavList({
   return (
     <div className="py-2">
       {heading && (
-        <p className="pb-1.5 text-[12px] font-medium text-[#8A8A8E]">
+        <p className="pb-1.5 text-[11px] font-semibold uppercase tracking-[0.12em] text-[#8A8A8E]">
           {heading}
         </p>
       )}
-      <ul className="border-t border-[#EDEDEB]">
+      <ul className="flex flex-col gap-1">
         {items.map((item) => (
-          <li key={item.url} className="border-b border-[#EDEDEB]">
-            {item.live ? (
-              <Link
-                href={item.url}
-                onClick={onNavigate}
-                className="flex items-center justify-between gap-3 py-2.5"
-              >
-                <span className="text-[14px] font-medium text-[#111111]">
+          <li key={item.url}>
+            <Link
+              href={item.url}
+              onClick={onNavigate}
+              className="flex items-center gap-3 rounded-xl p-2 transition-colors active:bg-[#F4F1FA]"
+            >
+              {item.icon && (
+                <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg border border-[#ECEAF0] bg-white">
+                  <Image
+                    src={item.icon}
+                    alt=""
+                    aria-hidden
+                    width={24}
+                    height={24}
+                    className="h-6 w-6 object-contain"
+                    draggable={false}
+                  />
+                </span>
+              )}
+              <span className="min-w-0 flex-1">
+                <span className="block text-[14px] font-medium text-[#111111]">
                   {item.label}
                 </span>
-                <span className="flex shrink-0 items-center gap-1 text-[12px] font-medium text-[#9900FF]">
-                  Explore
-                  <FaArrowRight className="text-[9px]" />
-                </span>
-              </Link>
-            ) : (
-              <span className="block py-2.5 text-[14px] text-[#A6A6AB]">
-                {item.label}
+                {item.summary && (
+                  <span className="mt-0.5 block truncate text-[12px] text-[#6B6B70]">
+                    {item.summary}
+                  </span>
+                )}
               </span>
-            )}
+              <FaArrowRight
+                className="shrink-0 text-[10px] text-[#9900FF]"
+                aria-hidden
+              />
+            </Link>
           </li>
         ))}
       </ul>

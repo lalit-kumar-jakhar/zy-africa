@@ -19,8 +19,8 @@ const menuLabel = (label: string) =>
     .replace(/\s+\((AI)\)$/, "")
     .replace(/\s+(Company|Services)$/, "");
 
-const liveFirst = <T extends { live: boolean }>(items: T[]) =>
-  [...items].sort((a, b) => Number(b.live) - Number(a.live));
+const liveOnly = <T extends { live: boolean }>(items: T[]) =>
+  items.filter((item) => item.live);
 
 const MENU_CATEGORIES = [
   {
@@ -41,7 +41,7 @@ const MENU_CATEGORY_OVERRIDES: Record<string, string> = {
   "/services/ui-ux-design": "Web & Mobile",
 };
 
-/** Services folded into three menu categories, with pages that exist on this site listed first. */
+/** Services folded into three menu categories, limited to pages that exist on this site. */
 export function serviceNavGroups(): NavServiceGroup[] {
   const all = categories.Services.flatMap((group) =>
     group.children.map((child) => ({
@@ -58,20 +58,20 @@ export function serviceNavGroups(): NavServiceGroup[] {
   );
 
   return MENU_CATEGORIES.map(({ label }) => {
-    const children = liveFirst(
+    const children = liveOnly(
       all.filter((entry) => entry.category === label).map((e) => e.child),
     );
     return {
       label,
-      liveCount: children.filter((child) => child.live).length,
+      liveCount: children.length,
       children,
     };
-  });
+  }).filter((group) => group.children.length > 0);
 }
 
-/** Every solution, with pages that exist on this site listed first. */
+/** Solutions that have a page on this site. */
 export function solutionNavItems(): NavSolutionItem[] {
-  return liveFirst(
+  return liveOnly(
     categories.Solutions.map((item) => ({
       ...item,
       live: isShippedHref(item.url),

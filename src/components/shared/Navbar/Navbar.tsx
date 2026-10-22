@@ -150,7 +150,7 @@ const Navbar: React.FC = () => {
                     onClick={() => setActiveDropdown(null)}
                     // inline-block + py-1 lifts the tap target from 18px to 26px,
                     // clearing the 24px WCAG 2.2 AA minimum.
-                    className={`inline-block py-1 hover:text-[#9900FF] transition duration-150`}
+                    className="inline-block py-1 text-[16px] font-medium hover:text-[#9900FF] transition duration-150"
                   >
                     {item.title}
                   </Link>

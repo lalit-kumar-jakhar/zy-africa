@@ -72,16 +72,19 @@ export const categories = {
           label: "Artificial Intelligence Development",
           icon: aiIcon,
           url: "/services/artificial-intelligence",
+          summary: "Classifiers, vision and recommendation engines",
         },
         {
           label: "Generative AI Development",
           icon: generativeAiIcon,
           url: "/services/generative-ai-development",
+          summary: "Grounded in your data, consistent at volume",
         },
         {
           label: "AI Agent Development",
           icon: agenticAiIcon,
           url: "/services/ai-agent-development",
+          summary: "Multi-agent orchestration with guardrails",
         },
         {
           label: "NLP Development",
@@ -107,11 +110,13 @@ export const categories = {
           label: "AI Chatbot Development Company",
           icon: aiChatbotIcon,
           url: "/services/ai-chatbot-development-company",
+          summary: "Support bots measured on resolution",
         },
         {
           label: "AI Workflow Automation Services",
           icon: aiWorkflowIcon,
           url: "/services/ai-workflow-automation-services",
+          summary: "End-to-end processes that handle exceptions",
         },
         {
           label: "Chat With Documents Solution",
@@ -137,6 +142,7 @@ export const categories = {
           label: "Mobile App Development",
           icon: mobileAppIcon,
           url: "/services/mobile-app-development",
+          summary: "Native and cross-platform iOS and Android apps",
         },
         {
           label: "Android App Development",
@@ -167,6 +173,7 @@ export const categories = {
           label: "Web Development",
           icon: webDevelopmentIcon,
           url: "/services/web-development",
+          summary: "Fast, scalable sites and web platforms",
         },
         {
           label: "MVP Development",
@@ -237,6 +244,7 @@ export const categories = {
           label: "Blockchain Development",
           icon: blockchainIcon,
           url: "/services/blockchain-development",
+          summary: "Secure, scalable on-chain products",
         },
         {
           label: "Smart Contract Development",
@@ -247,6 +255,7 @@ export const categories = {
           label: "IoT App Development",
           icon: iotIcon,
           url: "/services/iot-app-development",
+          summary: "Connected devices, data and control apps",
         },
         {
           label: " CI/CD Consulting Services",
@@ -274,6 +283,7 @@ export const categories = {
       backgroundImage: datingAppHeroBackgroundImage,
       summary:
         "AI matchmaking, real-time chat and monetisation, built for iOS, Android and web.",
+      highlights: ["AI matchmaking", "Real-time chat", "Monetisation", "iOS, Android & web"],
     },
     {
       label: "Fantasy Sports App Development",
