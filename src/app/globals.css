@@ -668,3 +668,77 @@ section.offer-ticker {
     mask-image: none;
   }
 }
+
+@keyframes hero-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes hero-caret-blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+.hero-float {
+  animation: hero-float 6s ease-in-out infinite;
+}
+
+.hero-caret {
+  animation: hero-caret-blink 1s steps(1) infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-float,
+  .hero-caret {
+    animation: none;
+  }
+}
+
+@keyframes jello-vertical {
+  0% {
+    transform: scale3d(1, 1, 1);
+  }
+  30% {
+    transform: scale3d(0.75, 1.25, 1);
+  }
+  40% {
+    transform: scale3d(1.25, 0.75, 1);
+  }
+  50% {
+    transform: scale3d(0.85, 1.15, 1);
+  }
+  65% {
+    transform: scale3d(1.05, 0.95, 1);
+  }
+  75% {
+    transform: scale3d(0.95, 1.05, 1);
+  }
+  100% {
+    transform: scale3d(1, 1, 1);
+  }
+}
+
+.squiggle-arrow {
+  transform-origin: left center;
+  transition: translate 0.3s ease;
+}
+
+.group:hover .squiggle-arrow,
+.group:focus-visible .squiggle-arrow {
+  translate: 4px 0;
+  animation: jello-vertical 0.9s both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .group:hover .squiggle-arrow,
+  .group:focus-visible .squiggle-arrow {
+    translate: none;
+    animation: none;
+  }
+}

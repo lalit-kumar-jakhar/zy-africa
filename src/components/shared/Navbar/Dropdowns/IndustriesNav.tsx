@@ -2,9 +2,9 @@
 
 import React, { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
+import SquiggleArrow from "@/components/common/SquiggleArrow";
 import { usePrefetchOnIntent } from "@/hooks/usePrefetchOnIntent";
 import Image from "next/image";
-import { FaArrowRight } from "react-icons/fa";
 import { liveIndustries } from "@/constants/feature-flags";
 import { industryGridClass } from "@/utils/industry-grid";
 import { NAV_BANNERS } from "./navAssets";
@@ -87,7 +87,7 @@ function IndustryCard({
         </p>
         <span className="mt-5 inline-flex items-center gap-1.5 text-[13px] font-medium text-[#616161] transition-colors duration-300 group-hover:text-[#9900ff]">
           Explore
-          <FaArrowRight className="text-[10px] transition-transform duration-300 group-hover:translate-x-0.5" />
+          <SquiggleArrow className="h-2.5 w-6" />
         </span>
       </div>
     </Link>

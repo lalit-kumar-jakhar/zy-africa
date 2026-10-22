@@ -2,9 +2,9 @@
 
 import React, { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
+import SquiggleArrow from "@/components/common/SquiggleArrow";
 import Image from "next/image";
 import {
-  FaArrowRight,
   FaBookOpen,
   FaPaperPlane,
   FaUsers,
@@ -185,10 +185,7 @@ const CompanyNav: React.FC<{ closeNavBottom?: () => void }> = ({
 
               <div className="mt-5 flex items-center gap-2 border-t border-[#EFEFF2] pt-3.5 text-[13px] font-medium text-[#111111] transition-colors duration-200 group-hover:border-white/25 group-hover:text-white">
                 <span>{item.cta}</span>
-                <FaArrowRight
-                  className="text-[10px] text-[#8A8A8E] transition-colors duration-200 group-hover:text-white"
-                  aria-hidden
-                />
+                <SquiggleArrow className="h-2.5 w-6 text-[#8A8A8E] transition-colors duration-200 group-hover:text-white" />
               </div>
             </Link>
           ))}
