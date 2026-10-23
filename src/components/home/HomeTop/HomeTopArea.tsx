@@ -2,28 +2,49 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { FaKey, FaPlug, FaShieldHalved } from "react-icons/fa6";
+import {
+  FaBookOpen,
+  FaGears,
+  FaRobot,
+  FaWandMagicSparkles,
+} from "react-icons/fa6";
 import SquiggleArrow from "@/components/common/SquiggleArrow";
 const heroBgImage = "/static/assets/home/hero/hero-bg.webp";
 import { useModal } from "@/context/ModalContext";
 import TypewriterText from "./TypewriterText";
+import HeroShowcase from "./HeroShowcase";
 
 const words = ["AI Agents", "AI Copilots", "RAG Systems", "AI Automations"];
 
-const proofPoints = [
-  { text: "Integrated with the systems you already run", Icon: FaPlug },
-  {
-    text: "Evaluation and guardrails built in, not bolted on",
-    Icon: FaShieldHalved,
-  },
-  { text: "You own the code, models and data", Icon: FaKey },
-];
-
 const floatingChips = [
-  { word: words[0], className: "left-[6%] top-[34%]", delay: "0s" },
-  { word: words[1], className: "left-[12%] top-[66%]", delay: "1.5s" },
-  { word: words[2], className: "right-[6%] top-[30%]", delay: "0.8s" },
-  { word: words[3], className: "right-[11%] top-[64%]", delay: "2.2s" },
+  {
+    word: words[0],
+    Icon: FaRobot,
+    tile: "from-[#ff732d] to-[#ff0044]",
+    glow: "shadow-[0_6px_16px_-4px_rgba(255,115,45,0.7)]",
+    className: "left-[4%] top-[32%] -rotate-3",
+  },
+  {
+    word: words[1],
+    Icon: FaWandMagicSparkles,
+    tile: "from-[#ff0044] to-[#c3007a]",
+    glow: "shadow-[0_6px_16px_-4px_rgba(255,0,68,0.7)]",
+    className: "left-[9%] top-[62%] rotate-2",
+  },
+  {
+    word: words[2],
+    Icon: FaBookOpen,
+    tile: "from-[#c3007a] to-[#9900ff]",
+    glow: "shadow-[0_6px_16px_-4px_rgba(195,0,122,0.7)]",
+    className: "right-[4%] top-[30%] rotate-3",
+  },
+  {
+    word: words[3],
+    Icon: FaGears,
+    tile: "from-[#9900ff] to-[#5b2bff]",
+    glow: "shadow-[0_6px_16px_-4px_rgba(153,0,255,0.7)]",
+    className: "right-[9%] top-[60%] -rotate-2",
+  },
 ];
 
 const NOTCH_EDGE = "M0 0 C90 0 100 88 200 88 H820 C920 88 930 0 1020 0";
@@ -66,16 +87,26 @@ const HomeTopArea: React.FC = () => {
           className="pointer-events-none absolute -right-32 top-10 h-96 w-96 rounded-full bg-[#9900ff]/12 blur-3xl"
         />
 
-        {floatingChips.map((chip) => (
-          <span
-            key={chip.word}
+        {floatingChips.map(({ word, Icon, tile, glow, className }) => (
+          <div
+            key={word}
             aria-hidden
-            style={{ animationDelay: chip.delay }}
-            className={`hero-float absolute hidden xl:inline-flex items-center gap-2 rounded-full border border-[#ECEAF0] bg-white/80 px-4 py-2 text-[13px] font-medium text-[#3A3A40] shadow-[0_10px_30px_-12px_rgba(153,0,255,0.35)] backdrop-blur-sm ${chip.className}`}
+            className={`absolute z-10 hidden 2xl:block ${className}`}
           >
-            <span className="h-2 w-2 rounded-full bg-linear-to-r from-[#ff732d] to-[#9900ff]" />
-            {chip.word}
-          </span>
+            <div className="rounded-full bg-linear-to-r from-[#ff732d]/50 via-[#ff0044]/30 to-[#9900ff]/50 p-px shadow-[0_20px_40px_-18px_rgba(153,0,255,0.45),0_4px_10px_-4px_rgba(17,17,17,0.08)]">
+              <div className="flex items-center gap-3 rounded-full bg-white/90 py-1.5 pl-1.5 pr-5 backdrop-blur-md">
+                <span
+                  className={`relative flex h-9 w-9 shrink-0 items-center justify-center overflow-hidden rounded-full bg-linear-to-br ${tile} ${glow} text-[15px] text-white`}
+                >
+                  <span className="absolute inset-x-0 top-0 h-1/2 bg-white/20" />
+                  <Icon className="relative" />
+                </span>
+                <span className="whitespace-nowrap text-[15px] font-semibold tracking-[-0.01em] text-[#111111]">
+                  {word}
+                </span>
+              </div>
+            </div>
+          </div>
         ))}
 
         <div className="container relative mx-auto">
@@ -168,29 +199,7 @@ const HomeTopArea: React.FC = () => {
             builds it, and stays on to keep it running.
           </p>
 
-          <div className="relative mx-auto mt-12 max-w-5xl overflow-hidden rounded-3xl border border-white/10 bg-white/4 backdrop-blur-md">
-            <span
-              aria-hidden
-              className="absolute inset-x-0 top-0 h-px bg-linear-to-r from-transparent via-[#ff0044]/70 to-transparent"
-            />
-            <ul className="grid divide-y divide-white/10 text-left md:grid-cols-3 md:divide-x md:divide-y-0">
-              {proofPoints.map(({ text, Icon }) => (
-                <li
-                  key={text}
-                  className="group flex items-center gap-4 px-6 py-5 transition-colors duration-300 hover:bg-white/5 md:flex-col md:items-start md:gap-5 md:px-7 md:py-7"
-                >
-                  <span className="relative flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-linear-to-br from-[#ff732d] via-[#ff0044] to-[#9900ff] p-px">
-                    <span className="flex h-full w-full items-center justify-center rounded-[11px] bg-[#0E0B14] text-[15px] text-white transition-colors duration-300 group-hover:bg-transparent">
-                      <Icon aria-hidden />
-                    </span>
-                  </span>
-                  <p className="text-[15px] font-medium leading-snug text-white/90 md:text-[17px]">
-                    {text}
-                  </p>
-                </li>
-              ))}
-            </ul>
-          </div>
+          <HeroShowcase />
         </div>
       </div>
     </section>

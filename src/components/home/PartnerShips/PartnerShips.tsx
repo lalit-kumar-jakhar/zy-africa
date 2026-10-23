@@ -1,32 +1,8 @@
 "use client";
 import Image from "next/image";
+import { partnerBrands } from "@/data/trust-marks";
 
 const shieldCheckIcon = "/static/assets/home/partnerLogos/shield.svg";
-const partnerBrands = [
-  { src: "/static/assets/home/partnerLogos/al-amri-express.svg", alt: "Al Amri Express" },
-  { src: "/static/assets/home/partnerLogos/cheersagar.svg", alt: "Cheer Sagar" },
-  { src: "/static/assets/home/partnerLogos/mrosupply.svg", alt: "MRO Supply" },
-  { src: "/static/assets/home/partnerLogos/bank-sathi.webp", alt: "BankSathi" },
-  { src: "/static/assets/home/partnerLogos/doradori.webp", alt: "DoraDori" },
-
-  { src: "/static/assets/home/partnerLogos/kroolo.svg", alt: "Kroolo" },
-  { src: "/static/assets/home/partnerLogos/stylebank.svg", alt: "StyleBank" },
-  { src: "/static/assets/home/partnerLogos/hire-right.svg", alt: "Hire Right" },
-  { src: "/static/assets/home/partnerLogos/cintas.svg", alt: "Cintas" },
-  { src: "/static/assets/home/partnerLogos/upintheair.webp", alt: "Up in the Air" },
-
-  { src: "/static/assets/home/partnerLogos/famepilot.svg", alt: "Famepilot" },
-  { src: "/static/assets/home/partnerLogos/swedishness.svg", alt: "Swedishness" },
-  { src: "/static/assets/home/partnerLogos/corribcoil.svg", alt: "Corrib Coil" },
-  { src: "/static/assets/home/partnerLogos/icare-heal.svg", alt: "iCare Heal" },
-  { src: "/static/assets/home/partnerLogos/twam.svg", alt: "TWAM" },
-
-  { src: "/static/assets/home/partnerLogos/ndc.svg", alt: "NDC: National Distribution Company Oman" },
-  { src: "/static/assets/home/partnerLogos/moneteo.svg", alt: "Moneteo" },
-  { src: "/static/assets/home/partnerLogos/algora.svg", alt: "Algora" },
-  { src: "/static/assets/home/partnerLogos/numerology.svg", alt: "Numerology" },
-  { src: "/static/assets/home/partnerLogos/g4girl.svg", alt: "G4Girl" },
-];
 
 const Partnerships = () => {
   const rows = [
