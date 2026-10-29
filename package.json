@@ -13,6 +13,7 @@
     "copy:css": "node scripts/copy-css.js"
   },
   "dependencies": {
+    "@swc/helpers": "^0.5.23",
     "@vercel/analytics": "^2.0.1",
     "axios": "^1.18.1",
     "clsx": "^2.1.1",

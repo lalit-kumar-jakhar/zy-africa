@@ -14,11 +14,8 @@ import Script from "next/script";
 import DMCABadge from "@/components/common/DMCABadge";
 import { COMPANY_CONTACT } from "@/data/companyDetails";
 import { isShippedHref } from "@/constants/shipped-routes";
+import { reviewPlatforms } from "@/data/trust-marks";
 const zynetoLogo = "/static/assets/zynetoLogoDark.svg";
-const certificate1 = "/static/assets/footer/cert1.svg";
-const certificate2 = "/static/assets/footer/cert2.svg";
-const upworkCertificate = "/static/assets/footer/upwork.svg";
-const techbehemothCertificate = "/static/assets/footer/tech-behemoths.svg";
 
 type LinkItem = { label: string; url: string };
 type SocialLink = { icon: React.ReactNode; url: string; label: string };
@@ -140,28 +137,7 @@ const Footer: React.FC = () => {
                 Trusted By Industry Leaders
               </h4>
               <div className="flex flex-wrap gap-6 justify-start">
-                {[
-                  {
-                    src: certificate1,
-                    alt: "Clutch",
-                    url: "https://clutch.co/profile/zyneto-global-technologies",
-                  },
-                  {
-                    src: certificate2,
-                    alt: "Good Firms",
-                    url: "https://www.goodfirms.co/company/zyneto",
-                  },
-                  {
-                    src: upworkCertificate,
-                    alt: "Upwork Badge",
-                    url: "https://www.upwork.com/freelancers/~018f329bb7e95655e6",
-                  },
-                  {
-                    src: techbehemothCertificate,
-                    alt: "Tech Behemoth",
-                    url: "https://techbehemoths.com/company/zyneto-global-technologies",
-                  },
-                ].map((cert, index) => (
+                {reviewPlatforms.map((cert, index) => (
                   <Link
                     key={index}
                     href={cert.url}
