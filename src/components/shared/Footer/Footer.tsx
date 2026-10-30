@@ -109,7 +109,7 @@ const Footer: React.FC = () => {
   return (
     <footer className="relative border-t border-black/10 bg-white text-[#161616] overflow-hidden">
       <div className="relative container mx-auto px-4 pt-12 lg:pt-20 pb-6 lg:pb-8 overflow-x-hidden">
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-12 mb-16">
+        <div className="grid md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-12 mb-16">
           <div className="lg:col-span-2 space-y-6">
             <Link href="/" className="w-[120px] md:w-[180px] block">
               <Image

@@ -147,7 +147,7 @@ const AboutUs: React.FC<AboutUsProps> = ({
         <p className="mt-10 mb-4 text-center text-xs font-semibold uppercase tracking-[0.12em] text-[#8E8E99]">
           Recognized by Industry Leaders
         </p>
-        <ul className="grid grid-cols-3 md:grid-cols-6 gap-3">
+        <ul className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-3">
           {awards.map((award) => (
             <li
               key={award.alt}

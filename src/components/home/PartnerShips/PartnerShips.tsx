@@ -65,7 +65,7 @@ const Partnerships = () => {
               </div>
             ))}
           </div>
-          <div className="grid w-full grid-cols-2 min-[360px]:grid-cols-3 md:grid-cols-4 xl:hidden gap-2 sm:gap-4">
+          <div className="grid w-full grid-cols-2 min-[360px]:grid-cols-3 md:grid-cols-3 lg:grid-cols-3 xl:hidden gap-2 sm:gap-4">
             {partnerBrands.map((brand, i) => (
               <div
                 key={i}
