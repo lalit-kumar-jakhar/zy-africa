@@ -27,7 +27,7 @@ const ContactTop = () => {
                 Let&apos;s Turn Your Vision into Reality
               </h1>
               <Reveal delay={baseDelay * 1} duration={500} direction="up">
-                <p className="text-lg md:text-xl font-normal text-white max-w-3xl mx-auto mb-10">
+                <p className="text-lg md:text-xl font-normal text-white max-w-3xl mb-10">
                   We don&apos;t just build products-we craft digital experiences
                   that solve real problems. Our team blends creativity,
                   technology, and strategy to turn your ideas into powerful,
@@ -134,10 +134,10 @@ const ContactTop = () => {
                 </div>
               </div>
             </div>
-                <p className="text-lg mt-4 text-[#ffffff] text-center">
-                  ⭐ Rated 4.9 by 270+ Happy Customers. 10+ Years of
-                  Industry-experience.
-                </p>
+            <p className="text-lg mt-4 text-[#ffffff] text-center">
+              ⭐ Rated 4.9 by 270+ Happy Customers. 10+ Years of
+              Industry-experience.
+            </p>
           </div>{" "}
           <TopFormContact isUsedInContactTop={true} />
         </div>
