@@ -291,7 +291,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className="font-sans antialiased">
       <head>
         <link rel="icon" type="image/ico" href="/favicon.ico" />
 
@@ -463,13 +463,7 @@ export default function RootLayout({
           id="mobile-optimizer"
         />
       </head>
-      <body
-        className="antialiased"
-        style={{
-          fontFamily:
-            'Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
-        }}
-      >
+      <body>
         <PerformanceMonitor />
         <script
           type="application/ld+json"

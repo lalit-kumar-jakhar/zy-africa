@@ -167,7 +167,7 @@ const nextConfig: NextConfig = {
                 `https://*.cookieyes.com`,
                 `https://images.dmca.com`,
               ].join(" ");
-              const styleSrc = `'self' 'unsafe-inline'`;
+              const styleSrc = `'self' 'unsafe-inline' https://fonts.googleapis.com`;
               const normalizeS3 = (val?: string): string => {
                 if (!val) return "";
                 // Ensure single https:// prefix and no duplicate schemes
@@ -186,7 +186,7 @@ const nextConfig: NextConfig = {
               };
               const apiSrc = originOf(process.env.NEXT_PUBLIC_BASE_URL);
               const imgSrc = `'self' data: blob: https:${s3Src}`;
-              const fontSrc = `'self' data:`;
+              const fontSrc = `'self' data: https://fonts.gstatic.com`;
               const connectSrc = [
                 `'self'`,
                 `https://www.google.com`,
