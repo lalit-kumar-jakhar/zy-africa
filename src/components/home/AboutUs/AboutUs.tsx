@@ -30,7 +30,6 @@ interface AboutUsProps {
   description?: string;
   stats?: Stat[];
   awards?: Award[];
-  isAboutUsPage?: boolean;
 }
 
 const AboutUs: React.FC<AboutUsProps> = ({
@@ -51,7 +50,6 @@ const AboutUs: React.FC<AboutUsProps> = ({
     { src: googleCloud, alt: "Google Cloud Identity and Security", scale: 65 },
     { src: techBehmoth, alt: "TechBehemoths Trusted Company", scale: 53 },
   ].filter((award) => award.src && award.src !== "undefined"),
-  isAboutUsPage = false,
 }) => {
   const pathname = usePathname();
   const { openModal } = useModal();
@@ -105,7 +103,7 @@ const AboutUs: React.FC<AboutUsProps> = ({
   return (
     <section
       ref={containerRef}
-      className={`w-full bg-[#FFFFFF] pt-6 ${isAboutUsPage ? "md:py-[96px] py-[32px]" : "md:pb-[96px] pb-[32px]"}`}
+      className="w-full bg-[#FFFFFF] pt-6 md:py-[96px] py-[32px]"
     >
       <div className="container mx-auto px-4">
         <div className="mx-auto max-w-3xl text-center">

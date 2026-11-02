@@ -1,7 +1,12 @@
 import { Metadata } from "next";
 import nextDynamic from "next/dynamic";
 import AboutTopArea from "@/components/about/AboutTopArea";
-import { safeJsonLd, buildBreadcrumbList, ORG_ID, WEBSITE_ID } from "@/components/seo/jsonld";
+import {
+  safeJsonLd,
+  buildBreadcrumbList,
+  ORG_ID,
+  WEBSITE_ID,
+} from "@/components/seo/jsonld";
 import { buildReviewNodes } from "@/components/seo/reviews-jsonld";
 
 const MissionAbout = nextDynamic(
@@ -10,17 +15,12 @@ const MissionAbout = nextDynamic(
     loading: () => (
       <div className="animate-pulse bg-gray-200 h-64 rounded-lg" />
     ),
-  }
+  },
 );
 
-const Leadership = nextDynamic(
-  () => import("@/components/about/Leadership"),
-  {
-    loading: () => (
-      <div className="animate-pulse bg-gray-200 h-64 rounded-lg" />
-    ),
-  }
-);
+const Leadership = nextDynamic(() => import("@/components/about/Leadership"), {
+  loading: () => <div className="animate-pulse bg-gray-200 h-64 rounded-lg" />,
+});
 
 const AboutUs = nextDynamic(() => import("@/components/home/AboutUs/AboutUs"), {
   loading: () => <div className="animate-pulse bg-gray-200 h-80 rounded-lg" />,
@@ -32,7 +32,7 @@ const Partnerships = nextDynamic(
     loading: () => (
       <div className="animate-pulse bg-gray-200 h-48 rounded-lg" />
     ),
-  }
+  },
 );
 
 const QualityAssurance = nextDynamic(
@@ -41,7 +41,7 @@ const QualityAssurance = nextDynamic(
     loading: () => (
       <div className="animate-pulse bg-gray-200 h-96 rounded-lg" />
     ),
-  }
+  },
 );
 
 const ServeIndustries = nextDynamic(
@@ -50,7 +50,7 @@ const ServeIndustries = nextDynamic(
     loading: () => (
       <div className="animate-pulse bg-gray-200 h-80 rounded-lg" />
     ),
-  }
+  },
 );
 
 const TechStack = nextDynamic(
@@ -59,7 +59,7 @@ const TechStack = nextDynamic(
     loading: () => (
       <div className="animate-pulse bg-gray-200 h-96 rounded-lg" />
     ),
-  }
+  },
 );
 
 const Testimonial = nextDynamic(
@@ -68,7 +68,7 @@ const Testimonial = nextDynamic(
     loading: () => (
       <div className="animate-pulse bg-gray-200 h-96 rounded-lg" />
     ),
-  }
+  },
 );
 
 const AdvServices = nextDynamic(
@@ -77,7 +77,7 @@ const AdvServices = nextDynamic(
     loading: () => (
       <div className="animate-pulse bg-gray-200 h-64 rounded-lg" />
     ),
-  }
+  },
 );
 
 export const dynamic = "force-static";
@@ -114,7 +114,7 @@ export const metadata: Metadata = {
       "Zyneto Global Technologies builds AI systems, web platforms and mobile apps for businesses worldwide. Meet the team, how we work, and what we ship.",
     site: "@zyneto",
     creator: "@zyneto",
-      images: [`https://zyneto.com/static/assets/about-us/about-bg.webp`],
+    images: [`https://zyneto.com/static/assets/about-us/about-bg.webp`],
   },
   robots: {
     index: true,
@@ -137,9 +137,7 @@ export default function AboutPage() {
       <AboutTopArea />
       <AboutUs
         title="Client Success Drives Us Forward"
-        subtitle="Zyneto: Where Bold Ideas Meet Transformative Technology"
         description="In current times, building a product is only the beginning. At Zyneto, we go beyond web and mobile app development, we partner with you for long-term growth. From scalable product creation to strategic IT consulting, we help startups and enterprises turn ideas into meaningful digital experiences that accelerate growth and deliver measurable results."
-        isAboutUsPage={true}
       />
       <MissionAbout />
       <Leadership />
@@ -165,10 +163,12 @@ export default function AboutPage() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: safeJsonLd(buildBreadcrumbList([
+          __html: safeJsonLd(
+            buildBreadcrumbList([
               { name: "Home", item: "https://zyneto.com" },
               { name: "About Us", item: "https://zyneto.com/about-us" },
-            ])),
+            ]),
+          ),
         }}
       />
       <script
