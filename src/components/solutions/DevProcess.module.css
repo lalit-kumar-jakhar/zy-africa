@@ -1,0 +1,186 @@
+/* Orbit HUD — scoped to DevProcess. All motion honors prefers-reduced-motion. */
+
+.stage {
+  --orbit-r: 36%;
+  --brand-orange: #ff732d;
+  --brand-red: #ff0044;
+  --brand-violet: #9900ff;
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+}
+
+.scan {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  pointer-events: none;
+  background: conic-gradient(
+    from 0deg,
+    transparent 0%,
+    rgba(255, 115, 45, 0.1) 6%,
+    transparent 16%
+  );
+  -webkit-mask: radial-gradient(
+    circle,
+    transparent 30%,
+    #000 32%,
+    #000 70%,
+    transparent 72%
+  );
+  mask: radial-gradient(
+    circle,
+    transparent 30%,
+    #000 32%,
+    #000 70%,
+    transparent 72%
+  );
+  animation: scan-rotate 14s linear infinite;
+}
+
+.orbitPath {
+  stroke-dasharray: 2.4 3.2;
+  animation: orbit-dash 24s linear infinite;
+}
+
+.beacon {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  will-change: transform;
+}
+
+.beam {
+  position: absolute;
+  left: 50%;
+  bottom: 50%;
+  width: 2px;
+  height: var(--orbit-r);
+  transform: translateX(-50%);
+  background: linear-gradient(
+    to top,
+    rgba(255, 115, 45, 0) 0%,
+    rgba(255, 115, 45, 0.2) 45%,
+    var(--brand-red) 100%
+  );
+}
+
+.pulseDot {
+  position: absolute;
+  left: 50%;
+  top: calc(50% - var(--orbit-r));
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #fff;
+  transform: translate(-50%, -50%);
+  box-shadow:
+    0 0 8px 2px rgba(255, 115, 45, 0.95),
+    0 0 22px 6px rgba(255, 0, 68, 0.4);
+}
+
+.nodeGlow {
+  animation: node-glow 2.4s ease-in-out infinite;
+}
+
+.progressCircle {
+  transform: rotate(-90deg);
+  transform-origin: 50% 50%;
+  animation: ring-fill var(--step-ms, 4s) linear forwards;
+}
+
+.timerFill {
+  transform-origin: left center;
+  animation: timer-fill var(--step-ms, 4s) linear forwards;
+}
+
+.paused .progressCircle,
+.paused .timerFill,
+.paused .scan,
+.paused .orbitPath,
+.timerFill.paused {
+  animation-play-state: paused;
+}
+
+.hubRing {
+  animation: hub-breathe 3.6s ease-in-out infinite;
+}
+
+.lineFill {
+  transition: height 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@keyframes scan-rotate {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes orbit-dash {
+  to {
+    stroke-dashoffset: -40;
+  }
+}
+
+@keyframes node-glow {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(255, 115, 45, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 0 12px rgba(255, 115, 45, 0);
+  }
+}
+
+@keyframes ring-fill {
+  from {
+    stroke-dashoffset: var(--ring-circ);
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes timer-fill {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes hub-breathe {
+  0%,
+  100% {
+    opacity: 0.45;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.9;
+    transform: scale(1.08);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scan,
+  .orbitPath,
+  .nodeGlow,
+  .progressCircle,
+  .timerFill,
+  .hubRing {
+    animation: none !important;
+  }
+
+  .progressCircle {
+    stroke-dashoffset: 0;
+  }
+
+  .timerFill {
+    transform: scaleX(1);
+  }
+
+  .lineFill {
+    transition: none;
+  }
+}

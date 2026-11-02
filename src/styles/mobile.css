@@ -1,0 +1,141 @@
+@media screen and (max-width: 768px) {
+  input[type="text"],
+  input[type="email"],
+  input[type="tel"],
+  input[type="password"],
+  textarea,
+  select {
+    font-size: 16px !important;
+    transform: translateZ(0);
+  }
+
+  button,
+  a,
+  [role="button"],
+  [tabindex] {
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  html,
+  body {
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior: auto;
+  }
+
+  form {
+    contain: layout;
+  }
+
+  nav {
+    contain: layout style;
+    will-change: transform;
+  }
+
+  .modal,
+  [role="dialog"] {
+    contain: layout style;
+    will-change: transform, opacity;
+  }
+
+  .gradient-bg-btn {
+    contain: layout;
+    will-change: transform;
+    transform: translateZ(0);
+  }
+
+  .text-yellow-orange-gradient {
+    contain: layout;
+    will-change: auto;
+  }
+
+  @media (prefers-reduced-data: reduce) {
+    video {
+      display: none !important;
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .mobile-touch-target {
+    min-height: 44px;
+    min-width: 44px;
+    touch-action: manipulation;
+  }
+
+  .mobile-scroll-optimized {
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior: contain;
+  }
+
+  .mobile-no-animation {
+    animation: none !important;
+    transition: none !important;
+  }
+
+  .mobile-gpu-accelerated {
+    transform: translateZ(0);
+    will-change: transform;
+  }
+
+  .mobile-contain-layout {
+    contain: layout;
+  }
+
+  .mobile-contain-paint {
+    contain: paint;
+  }
+
+  .mobile-contain-size {
+    contain: size;
+  }
+
+  .mobile-contain-strict {
+    contain: strict;
+  }
+
+  .mobile-content-visibility-auto {
+    content-visibility: auto;
+  }
+
+  .mobile-font-display-swap {
+    font-display: swap;
+  }
+
+  .mobile-text-rendering-optimized {
+    text-rendering: optimizeSpeed;
+  }
+
+  .mobile-image-rendering-optimized {
+    image-rendering: optimizeSpeed;
+  }
+}
+
+.mobile-performance-indicator {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  z-index: 9999;
+  display: none;
+}
+
+.mobile-performance-indicator.show {
+  display: block;
+}
+
+.mobile-performance-indicator.good {
+  background: rgba(0, 128, 0, 0.8);
+}
+
+.mobile-performance-indicator.needs-improvement {
+  background: rgba(255, 165, 0, 0.8);
+}
+
+.mobile-performance-indicator.poor {
+  background: rgba(255, 0, 0, 0.8);
+}
