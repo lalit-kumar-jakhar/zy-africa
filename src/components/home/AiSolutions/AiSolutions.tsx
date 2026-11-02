@@ -118,13 +118,7 @@ const AiSolutions: React.FC = () => {
           ))}
         </div>
 
-        <div className="mt-9 flex flex-col items-center justify-between gap-4 rounded-3xl border border-violet-100 bg-white/75 px-6 py-5 sm:flex-row sm:px-8">
-          <p className="text-center text-sm text-[#6B6875] sm:text-left">
-            Looking for something more specific?{" "}
-            <span className="font-semibold text-[#24202D]">
-              See everything we build.
-            </span>
-          </p>
+        <div className="mt-9 flex justify-center">
           <Link
             className="gradient-bg-btn inline-flex shrink-0 items-center justify-center rounded-full px-6 py-3 text-sm font-semibold transition-all duration-300 hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-violet-600 focus-visible:ring-offset-2 motion-reduce:transform-none motion-reduce:transition-none"
             href="/ai"

@@ -59,7 +59,7 @@ const AboutUs: React.FC<AboutUsProps> = ({
 
   const statRefs = useMemo(
     () => stats.map(() => React.createRef<HTMLSpanElement>()),
-    [stats]
+    [stats],
   );
 
   useLayoutEffect(() => {
@@ -94,7 +94,7 @@ const AboutUs: React.FC<AboutUsProps> = ({
           }
         });
       },
-      { threshold: 0.2 }
+      { threshold: 0.2 },
     );
 
     observer.observe(containerRef.current);
@@ -109,12 +109,12 @@ const AboutUs: React.FC<AboutUsProps> = ({
     >
       <div className="container mx-auto px-4">
         <div className="mx-auto max-w-3xl text-center">
-          <div className="inline-flex rounded-full bg-[#F4F0FF] px-5 py-1 mb-3">
-            <span className="text-sm font-semibold tracking-wide text-violet-700 uppercase">
+          <div className="mb-3 inline-flex rounded-full bg-[linear-gradient(-135deg,#ff732d,#ff0044,#9900ff)] px-5 py-1">
+            <span className="text-sm font-semibold uppercase tracking-wide text-white">
               Who We Are
             </span>
           </div>
-          <h2 className="text-3xl md:text-4xl font-bold text-black mb-3 leading-tight">
+          <h2 className="mb-3 text-3xl font-bold leading-tight tracking-tight text-[#201532] md:text-4xl">
             {title}
           </h2>
           {subtitle && (
@@ -133,9 +133,34 @@ const AboutUs: React.FC<AboutUsProps> = ({
               key={item.label}
               className="px-4 py-7 text-center border-b sm:border-b-0 sm:border-r border-[#F0F0F0] last:border-b-0 sm:last:border-r-0"
             >
-              <span className="block text-4xl lg:text-5xl font-bold bg-linear-to-r from-violet-600 via-pink-500 to-orange-500 bg-clip-text text-transparent tabular-nums">
-                <span ref={statRefs[index]}>{item.value}</span>
-                {item.suffix}
+              <span className="block text-4xl font-bold tabular-nums lg:text-5xl">
+                <span
+                  ref={statRefs[index]}
+                  style={{
+                    display: "inline-block",
+                    backgroundImage:
+                      "linear-gradient(-135deg, #ff732d, #ff0044, #9900ff)",
+                    backgroundClip: "text",
+                    WebkitBackgroundClip: "text",
+                    color: "transparent",
+                    WebkitTextFillColor: "transparent",
+                  }}
+                >
+                  {item.value}
+                </span>
+                <span
+                  style={{
+                    display: "inline-block",
+                    backgroundImage:
+                      "linear-gradient(-135deg, #ff732d, #ff0044, #9900ff)",
+                    backgroundClip: "text",
+                    WebkitBackgroundClip: "text",
+                    color: "transparent",
+                    WebkitTextFillColor: "transparent",
+                  }}
+                >
+                  {item.suffix}
+                </span>
               </span>
               <span className="mt-2 block text-sm text-[#616161]">
                 {item.label}
